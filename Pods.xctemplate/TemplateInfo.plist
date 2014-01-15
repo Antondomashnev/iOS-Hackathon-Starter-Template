@@ -25,9 +25,9 @@ F<?xml version="1.0" encoding="UTF-8"?>
 		<string>pod &quot;UIAlertView+Blocks&quot;, &quot;~>1.0&quot;</string>
 
 		<key>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</key>
-		<string>#import <FrameAccessor/FrameAccessor.h></string>
+		<string>#import &lt;FrameAccessor/FrameAccessor.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:ObjectiveSugar</key>
-		<string>#import <ObjectiveSugar/ObjectiveSugar.h></string>
+		<string>#import &lt;ObjectiveSugar/ObjectiveSugar.h&gt;</string>
 	</dict>
 	<key>Description</key>
 	<string></string>

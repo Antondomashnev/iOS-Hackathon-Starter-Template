@@ -8,6 +8,8 @@
 	<string>This template provides a starting point for an application for hackathon.</string>
 	<key>Ancestors</key>
 	<array>
+		<string>com.antondomashnev.template.hackathonApplication.pods</string>
+		<string>com.antondomashnev.template.hackathonApplication.cocoaPods</string>
 		<string>com.apple.dt.unit.objectiveCApplication</string>
 		<string>com.apple.dt.unit.iPhoneBase</string>
 		<string>com.apple.dt.unit.prefixable</string>
