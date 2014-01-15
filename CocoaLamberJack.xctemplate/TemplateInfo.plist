@@ -29,6 +29,20 @@ int ddLogLevel = LOG_LEVEL_VERBOSE;
 int ddLogLevel = LOG_LEVEL_ERROR;
 #endif
 		</string>
+
+		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (void)initializeLogging
+{
+	[DDLog addLogger:[DDASLLogger sharedInstance]];
+   	[DDLog addLogger:[DDTTYLogger sharedInstance]];</string>
+			<key>End</key>
+			<string>}
+</string>
+			<key>Indent</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>Description</key>
 	<string></string>
@@ -41,6 +55,7 @@ int ddLogLevel = LOG_LEVEL_ERROR;
 		<string>___PACKAGENAME___-Prefix.pch:objC:DDLog</string>
 		<string>___PACKAGENAME___-Prefix.pch:endif:ddLogLevel</string>
 		<string>main.m:CocoaLumberjack:logLevel</string>
+		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
 	</array>
 	<key>Options</key>
 	<array>
