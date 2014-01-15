@@ -20,6 +20,15 @@
 		<string>#import "DDLog.h"</string>
 		<key>___PACKAGENAME___-Prefix.pch:endif:ddLogLevel</key>
 		<string>extern int ddLogLevel;</string>
+
+		<key>main.m:CocoaLumberjack:logLevel</key>
+		<string>
+#if DEBUG
+int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+int ddLogLevel = LOG_LEVEL_ERROR;
+#endif
+		</string>
 	</dict>
 	<key>Description</key>
 	<string></string>
@@ -31,6 +40,7 @@
 		<string>___PACKAGENAME___-Prefix.pch:objC:DDLogProjectSettings</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:DDLog</string>
 		<string>___PACKAGENAME___-Prefix.pch:endif:ddLogLevel</string>
+		<string>main.m:CocoaLumberjack:logLevel</string>
 	</array>
 	<key>Options</key>
 	<array>
