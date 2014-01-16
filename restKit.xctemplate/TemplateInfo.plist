@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>com.antondomashnev.template.hackathonApplication.restKit</string>
+	<key>Name</key>
+	<string>RestKit Dependency</string>
+	<key>Ancestors</key>
+	<array>
+	</array>
+	<key>Definitions</key>
+	<dict> 
+		<key>../Podfile:RestKit</key>
+		<string>pod &quot;RestKit&quot;, &quot;~> 0.20.3&quot;</string>
+
+		<key>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</key>
+		<string>#import &lt;ystemConfiguration/SystemConfiguration&gt;</string>
+		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
+		<string>#import &lt;MobileCoreServices/MobileCoreServices.h&gt;</string>
+	</dict>
+	<key>Description</key>
+	<string></string>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Nodes</key>
+	<array>
+		<string>../Podfile:RestKit</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
+	</array>
+	<key>Options</key>
+	<array>
+	</array>
+	<key>SortOrder</key>
+	<integer>1</integer>
+</dict>
+</plist>
