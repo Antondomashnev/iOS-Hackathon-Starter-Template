@@ -12,6 +12,7 @@
 		<string>com.antondomashnev.template.hackathonApplication.cocoaPods</string>
 		<string>com.antondomashnev.template.hackathonApplication.pods</string>
 		<string>com.antondomashnev.template.hackathonApplication.cocoaLumberjack</string>
+		<string>com.antondomashnev.template.hackathonApplication.RestKit</string>
 	</array>
 	<key>Concrete</key>
 	<true/>
