@@ -19,7 +19,7 @@
 		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
 		<string>#import &lt;MobileCoreServices/MobileCoreServices.h&gt;</string>
 
-		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</key>
+		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</key>
 		<string>RKLogConfigureByName("RestKit/Network", RKLogLevelWarning);</string>
 
 		<key>Classes/ServiceObjectManager.h</key>
@@ -38,7 +38,34 @@
 			<key>End</key>
 			<string>@end</string>
 			<key>Group</key>
-			<key>Networking</key>
+			<string>Networking</string>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m</key>
+		<dict>
+			<key>Beginning</key>
+			<dict>
+				<key>Header</key>
+				<string>#import "ServiceObjectManager.h"</string>
+				<key>Private</key>
+				<dict>
+					<key>Beginning</key>
+					<string>
+@interface ServiceHelper()
+@property (nonatomic, strong, readwrite) NSString *serviceName;
+					</string>
+					<key>End</key>
+					<string>@end</string>
+				</dict>
+				<key>Interface</key>
+				<string>
+					@implementation ServiceObjectManager
+				</string>
+			</dict>
+			<key>End</key>
+			<string>@end</string>
+			<key>Group</key>
+			<string>Networking</string>
 		</dict>
 	</dict>
 	<key>Description</key>
@@ -50,6 +77,9 @@
 		<string>../Podfile:RestKit</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
+		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
+		<string>Classes/ServiceObjectManager.h</string>
+		<string>Classes/ServiceObjectManager.m</string>
 	</array>
 	<key>Options</key>
 	<array>
@@ -145,7 +175,9 @@
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</string>
-						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
+						<string>Classes/ServiceObjectManager.h</string>
+						<string>Classes/ServiceObjectManager.m</string>
 					</array>
 					<key>Targets</key>
 					<array>

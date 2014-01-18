@@ -36,7 +36,7 @@ int ddLogLevel = LOG_LEVEL_ERROR;
 			<string>- (void)initializeLogging
 {
 	[DDLog addLogger:[DDASLLogger sharedInstance]];
-   	[DDLog addLogger:[DDTTYLogger sharedInstance]];</string>
+	[DDLog addLogger:[DDTTYLogger sharedInstance]];</string>
 			<key>End</key>
 			<string>}
 </string>
