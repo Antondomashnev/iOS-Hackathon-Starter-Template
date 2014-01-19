@@ -70,6 +70,9 @@
 static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
 static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 
+NSString * const kFacebookAccessTokenKey = @"___PROJECTNAME___.kFacebookAccessTokenKey";
+NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookExpirationDateKeyKey";
+
 @implementation FacebookServiceObjectManager
 							</string>
 							<key>End</key>
@@ -119,10 +122,12 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 - (NSDictionary *)completeRequestParametersForParameters:(NSDictionary *)params
 {
 	NSMutableDictionary *fullParameters = [NSMutableDictionary new];
-    if(params){
+    if(params)
+    {
         [fullParameters setValuesForKeysWithDictionary:params];
     }
-    if([FBSession activeSession].accessTokenData.accessToken){
+    if([FBSession activeSession].accessTokenData.accessToken)
+    {
         fullParameters[@"access_token"] = [FBSession activeSession].accessTokenData.accessToken;
     }
 				    		</string>
@@ -157,12 +162,14 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 {
     if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded){
         
-        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]]){
+        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        {
             [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
                                                allowLoginUI:YES
                                           completionHandler:nil];
         }
-        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]]){
+        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        {
             [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
                                                defaultAudience:FBSessionDefaultAudienceEveryone
                                                   allowLoginUI:YES
@@ -172,6 +179,109 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 							</string>
 							<key>End</key>
 							<string>{</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:defaultErrorForCode</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
+{
+	if(code == FBErrorLoginFailedOrCancelled){
+        NSString *loginFailingReason = underlyingError.userInfo[FBErrorLoginFailedReason];
+        if([loginFailingReason isEqualToString:@"com.facebook.sdk:SystemLoginDisallowedWithoutError"]){
+            return [NSError errorWithDomain:underlyingError.domain code:code userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Facebook: accounts access error description"),
+                                                                                        NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow Cirqle to access your Facebook accounts from your device's privacy settings", @"Facebook: accounts access error recovery suggestion")}];
+        }
+        else{
+            return underlyingError;
+        }
+    }
+    else{
+        return underlyingError;
+    }				
+							</string>
+							<key>End</key>
+							<string>}</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)logInWithCallback:(CQServiceAuthInfoBlock)callback permissions:(ServicePermissionSet)permissions
+{
+	void(^localCallback)(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error){
+        if(FB_ISSESSIONOPENWITHSTATE(status) &amp;&amp;
+           error == nil)
+           	{
+           		DDLogInfo(@"Facebook login succes");
+           		NSMutableDictionary *result = [@{} mutableCopy];
+           		if(session.accessTokenData.accessToken)
+           		{
+           			result[kFacebookAccessTokenKey] = session.accessTokenData.accessToken;
+           		}
+           		if(session.accessTokenData.expirationDate)
+           		{
+           			result[kFacebookExpirationDateKeyKey] = session.accessTokenData.expirationDate;
+           		}
+           		BLOCK_SAFE_RUN(callback, result, error);
+        }
+        else
+        {
+            
+            DDLogWarn(@"Facebook login failed: %@", [error description]);
+            BLOCK_SAFE_RUN(callback, nil, error);
+        }
+    };
+    
+    switch (permissions) 
+    {
+        case ServicePermissionSetRead:
+        {
+            [FBSession openActiveSessionWithReadPermissions:nil
+                                                  allowLoginUI:YES
+                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
+                                             {
+                                                 localCallback(session, status, permissions, error);
+                                             }];
+            break;
+        }
+        case ServicePermissionSetWrite:
+        {
+        	if(FB_ISSESSIONOPENWITHSTATE(status))
+        	{
+        		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
+												       		{
+												                localCallback(session, session.state, permissions, error);
+												            }];
+        	}
+        	else
+        	{
+        		[FBSession openActiveSessionWithReadPermissions:nil
+                                                  allowLoginUI:YES
+                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
+                                             {
+                                             	if(FB_ISSESSIONOPENWITHSTATE(status) &amp;&amp;
+           										   error == nil)
+           										   	{
+           										   		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
+												       		{
+												                localCallback(session, session.state, permissions, error);
+												            }];
+           										   	}
+           										   	else
+           										   	{
+           										   		localCallback(session, status, permissions, error);
+           										   	}
+                                             }];
+        	}
+            break;
+        }
+        default:
+            break;
+    }
+							</string>
+							<key>End</key>
+							<string>}</string>
 						</dict>
 					</dict>
 					<key>Nodes</key>
@@ -183,6 +293,7 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 						<string>Classes/FacebookServiceObjectManager.m:method:sharedManager</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</string>
 					</array>
 				</dict>
 			</dict>
