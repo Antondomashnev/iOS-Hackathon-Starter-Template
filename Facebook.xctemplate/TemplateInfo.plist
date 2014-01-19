@@ -9,65 +9,6 @@
 	<key>Ancestors</key>
 	<array>
 	</array>
-	<key>Definitions</key>
-	<dict> 
-		<key>../Podfile:Facebook-iOS-SDK</key>
-		<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
-
-		<key>Classes/FacebookServiceObjectManager.h</key>
-		<dict>
-			<key>Beginning</key>
-			<string>#import "ServiceObjectManager.h"
-#import &lt;FacebookSDK/FacebookSDK.h&gt;
-
-@interface FacebookServiceObjectManager : ServiceObjectManager
-
-			</string>
-			<key>End</key>
-			<string>@end</string>
-			<key>Group</key>
-			<string>Networking</string>
-		</dict>
-
-		<key>Classes/FacebookServiceObjectManager.m</key>
-		<dict>
-			<key>Beginning</key>
-			<string>#import "FacebookServiceObjectManager.h"
-
-@implementation ServiceObjectManager
-			</string>
-			<key>End</key>
-			<string>@end</string>
-			<key>Group</key>
-			<string>Networking</string>
-		</dict>
-
-		<key>Classes/ServiceObjectManager.m:method:initWithHTTPClient</key>
-		<dict>
-			<key>Beginning</key>
-			<string>- (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName
-{
-	if(self = [super initWithHTTPClient:client]){
-        self.serviceName = serviceName;
-    }
-
-    return self;
-    		</string>
-    		<key>End</key>
-    		<string>}</string>
-		</dict>
-
-		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
-		<dict>
-			<key>Beginning</key>
-			<string>+ (instancetype)sharedManager
-{
-	methodNotImplemented();
-			</string>
-			<key>End</key>
-			<string>}<</string>
-		</dict>
-	</dict>
 	<key>Description</key>
 	<string></string>
 	<key>Kind</key>
@@ -89,11 +30,11 @@
 			<key>Default</key>
 			<string>false</string>
 			<key>Description</key>
-			<string>Whether the application should use the Core Data framework for storage</string>
+			<string>Whether the application should use support Facebook authorization and other</string>
 			<key>Identifier</key>
 			<string>coreData</string>
 			<key>Name</key>
-			<string>Use Core Data</string>
+			<string>Enable Facebook</string>
 			<key>SortOrder</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -103,92 +44,122 @@
 				<key>true</key>
 				<dict>
 					<key>Definitions</key>
-					<dict>
-						<key>../Podfile:MagicalRecord</key>
-            			<string>pod &quot;MagicalRecord&quot;, &quot;~> 2.2&quot;</string>
+					<dict> 
+						<key>../Podfile:Facebook-iOS-SDK</key>
+						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
 
-            			<key>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</key>
-            			<string>#import &lt;CoreData/CoreData.h&gt;</string>
-
-            			<key>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</key>
-            			<string>#define MR_SHORTHAND</string>
-
-            			<key>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</key>
-						<dict>
-							<key>Path</key>
-							<string>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
-              				<key>Group</key>
-              				<string>Models</string>
-						</dict>
-
-						<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</key>
+						<key>Classes/FacebookServiceObjectManager.h</key>
 						<dict>
 							<key>Beginning</key>
-							<string>
-@interface NSManagedObjectContext (MRDefaultContextSetter)
-+(void) MR_setDefaultContext:(NSManagedObjectContext*)context;
-+(void) MR_setRootSavingContext:(NSManagedObjectContext*)context;
-+(void) MR_cleanUp;
+							<string>#import "ServiceObjectManager.h"
+
+@interface FacebookServiceObjectManager : ServiceObjectManager
+
 							</string>
 							<key>End</key>
-							<string>
-@end
+							<string>@end</string>
+							<key>Group</key>
+							<string>Networking</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#import "FacebookServiceObjectManager.h"
+#import &lt;FacebookSDK/FacebookSDK.h&gt;
+
+static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
+static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
+
+@implementation FacebookServiceObjectManager
+							</string>
+							<key>End</key>
+							<string>@end</string>
+							<key>Group</key>
+							<string>Networking</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (id)initWithHTTPClient:(AFHTTPClient *)client
+{
+    self = [super initWithHTTPClient:client serviceName:@"Facebook"];
+    if(self)
+    {
+				    		</string>
+				    		<key>End</key>
+				    		<string>
+	}
+    return self;
+}
+				    		</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:sharedManager</key>
+						<dict>
+							<key>Beginning</key>
+							<string>static FacebookHelper *sharedInstance;
++ (instacetype)sharedManager{
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedInstance = [[FacebookHelper alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:kFacebookBaseURL]]];
+    });
+							</string>
+							<key>End</key>
+							<string>    
+	return sharedInstance;
+}
 							</string>
 						</dict>
 
-						<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</key>
+						<key>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)initializeCoreData
+							<string>#pragma mark - Helpers
+- (NSDictionary *)completeRequestParametersForParameters:(NSDictionary *)params
 {
-	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"___PACKAGENAMEASIDENTIFIER___DataModel" ofType:@"momd"]];
-    NSAssert(modelURL != nil, @"Unable to find DataModel in main bundle");
-
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:[ApplicationManager coreDataDatabaseName]];
-    NSError *error = nil;
-    
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&amp;error];
-    if(!error){
-        [managedObjectStore createManagedObjectContexts];
-        // Configure MagicalRecord to use RestKit's Core Data stack
-        [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
-        [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
-        [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
-	}
-   							</string>
-   							<key>End</key>
-							<string>
+	NSMutableDictionary *fullParameters = [NSMutableDictionary new];
+    if(params){
+        [fullParameters setValuesForKeysWithDictionary:params];
+    }
+    if([FBSession activeSession].accessTokenData.accessToken){
+        fullParameters[@"access_token"] = [FBSession activeSession].accessTokenData.accessToken;
+    }
+				    		</string>
+				    		<key>End</key>
+				    		<string>
+    return fullParameters;
 }
 							</string>
-							<key>Indent</key>
-							<integer>1</integer>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:getObjectsAtPath</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - RKObjectManager
+- (void)getObjectsAtPath:(NSString *)path
+              parameters:(NSDictionary *)parameters
+                 success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+                 failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+{
+							</string>
+							<key>End</key>
+							<string>        
+	[super getObjectsAtPath:path parameters:[self completeRequestParametersForParameters: parameters] success:success failure:failure];
+}
+							</string>
 						</dict>
 					</dict>
 					<key>Nodes</key>
 					<array>
-						<string>../Podfile:MagicalRecord</string>
-						<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
-						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</string>
-						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
-						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
-						<string>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</string>
-						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
-						<string>Classes/ServiceObjectManager.h</string>
-						<string>Classes/ServiceObjectManager.m</string>
-					</array>
-					<key>Targets</key>
-					<array>
-						<dict>
-							<key>Frameworks</key>
-							<array>
-								<string>CoreData</string>
-							</array>
-						</dict>
+						<string>../Podfile:Facebook-iOS-SDK</string>
+						<string>Classes/FacebookServiceObjectManager.h</string>
+						<string>Classes/FacebookServiceObjectManager.m</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:sharedManager</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:getObjectsAtPath</string>
 					</array>
 				</dict>
 			</dict>
