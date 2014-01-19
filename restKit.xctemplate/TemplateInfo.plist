@@ -25,7 +25,8 @@
 		<key>Classes/ServiceObjectManager.h</key>
 		<dict>
 			<key>Beginning</key>
-			<string>#import &lt;RestKit/RestKit.h&gt;
+			<string>#import &lt;Foundation/Foundation.h&gt;
+#import &lt;RestKit/RestKit.h&gt;
 
 @interface ServiceObjectManager : RKObjectManager
 
@@ -44,28 +45,44 @@
 		<key>Classes/ServiceObjectManager.m</key>
 		<dict>
 			<key>Beginning</key>
-			<dict>
-				<key>Header</key>
-				<string>#import "ServiceObjectManager.h"</string>
-				<key>Private</key>
-				<dict>
-					<key>Beginning</key>
-					<string>
+			<string>#import "ServiceObjectManager.h"
+	
 @interface ServiceHelper()
 @property (nonatomic, strong, readwrite) NSString *serviceName;
-					</string>
-					<key>End</key>
-					<string>@end</string>
-				</dict>
-				<key>Interface</key>
-				<string>
-					@implementation ServiceObjectManager
-				</string>
-			</dict>
+@end
+
+@implementation ServiceObjectManager
+			</string>
 			<key>End</key>
 			<string>@end</string>
 			<key>Group</key>
 			<string>Networking</string>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:initWithHTTPClient</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName
+{
+	if(self = [super initWithHTTPClient:client]){
+        self.serviceName = serviceName;
+    }
+
+    return self;
+    		</string>
+    		<key>End</key>
+    		<string>}</string>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
+		<dict>
+			<key>Beginning</key>
+			<string>+ (id)sharedManager
+{
+	methodNotImplemented();
+			</string>
+			<key>End</key>
+			<string>}</string>
 		</dict>
 	</dict>
 	<key>Description</key>
@@ -80,6 +97,7 @@
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
 		<string>Classes/ServiceObjectManager.h</string>
 		<string>Classes/ServiceObjectManager.m</string>
+		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
 	</array>
 	<key>Options</key>
 	<array>
