@@ -28,7 +28,11 @@
 			<string>#import &lt;Foundation/Foundation.h&gt;
 #import &lt;RestKit/RestKit.h&gt;
 
-static NSString * const k___PACKAGENAMEASIDENTIFIER___APIBaseURLString = @"&lt;# API Base URL #&gt;";
+NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
+{
+    ServiceObjectManagerPermissionSetRead = 1,
+    ServiceObjectManagerPermissionSetWrite = 2
+};
 
 @interface ServiceObjectManager : RKObjectManager
 
@@ -37,6 +41,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___APIBaseURLString = @"&lt;#
 + (instancetype)sharedHelper;
 - (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName;
 - (id)initWithServiceName:(NSString *)serviceName;
+- (void)logInWithCallback:(void (^)(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions;
 			</string>
 			<key>End</key>
 			<string>@end</string>
@@ -48,12 +53,6 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___APIBaseURLString = @"&lt;#
 		<dict>
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
-	
-NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
-{
-    ServiceObjectManagerPermissionSetRead = 1,
-    ServiceObjectManagerPermissionSetWrite = 2
-};
 
 @interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;
