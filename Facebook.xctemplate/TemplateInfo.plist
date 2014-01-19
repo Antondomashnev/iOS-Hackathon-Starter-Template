@@ -54,7 +54,6 @@
 							<string>#import "ServiceObjectManager.h"
 
 @interface FacebookServiceObjectManager : ServiceObjectManager
-
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -134,19 +133,19 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 							</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:getObjectsAtPath</key>
+						<key>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - RKObjectManager
-- (void)getObjectsAtPath:(NSString *)path
-              parameters:(NSDictionary *)parameters
-                 success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
-                 failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+- (id)appropriateObjectRequestOperationWithObject:(id)object
+                                           method:(RKRequestMethod)method
+                                             path:(NSString *)path
+                                       parameters:(NSDictionary *)parameters
 {
 							</string>
 							<key>End</key>
 							<string>        
-	[super getObjectsAtPath:path parameters:[self completeRequestParametersForParameters: parameters] success:success failure:failure];
+	return [super appropriateObjectRequestOperationWithObject:object method:method path:path parameters:[self completeRequestParametersForParameters: parameters]];
 }
 							</string>
 						</dict>
@@ -159,7 +158,7 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 						<string>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:sharedManager</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:getObjectsAtPath</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
 					</array>
 				</dict>
 			</dict>
