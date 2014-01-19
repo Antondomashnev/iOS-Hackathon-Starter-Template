@@ -103,6 +103,23 @@ NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							</string>
 						</dict>
 
+						<key>Classes/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</key>
+						<dict>
+							<key>Beginning</key>
+							<string> static __strong ACAccountStore *store;
++ (ACAccountStore *)sharedTwitterAccountStore
+{
+	static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        store = [[ACAccountStore alloc] init];
+    });
+							</string>
+							<key>End</key>
+							<string>return store;
+}
+							</string>
+						</dict>
+
 						<key>Classes/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
 						<dict>
 							<key>Beginning</key>
@@ -113,9 +130,11 @@ NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
     
     [apiManager
      performReverseAuthForAccount:account
-     withHandler:^(NSData *responseData, NSError *error) {
+     withHandler:^(NSData *responseData, NSError *error) 
+     {
          NSString *token = nil;
-         if (responseData) {
+         if (responseData) 
+         {
              token = [[NSString alloc]
                       initWithData:responseData
                       encoding:NSUTF8StringEncoding];
@@ -133,139 +152,175 @@ NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							<key>Beginning</key>
 							<string>- (void)selectTwitterAccountIndexFromAccounts:(NSArray*)accounts withCallback:(void(^)(ACAccount* account))callback
 {
-	
-							</string>
-							<key>End</key>
-							<string>        
-	return [super appropriateObjectRequestOperationWithObject:object method:method path:path parameters:[self completeRequestParametersForParameters: parameters]];
-}
-							</string>
-						</dict>
-
-						<key>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (void)openSessionIfTokenLoaded
-{
-    if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded){
-        
-        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+	if([accounts count]>0){
+        if([accounts count]==1)
         {
-            [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
-                                               allowLoginUI:YES
-                                          completionHandler:nil];
+            callback(accounts[0]);
         }
-        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        else
         {
-            [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
-                                               defaultAudience:FBSessionDefaultAudienceEveryone
-                                                  allowLoginUI:YES
-                                             completionHandler:nil];
-        }
-    }
-							</string>
-							<key>End</key>
-							<string>{</string>
-						</dict>
-
-						<key>Classes/FacebookServiceObjectManager.m:method:defaultErrorForCode</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
-{
-	if(code == FBErrorLoginFailedOrCancelled){
-        NSString *loginFailingReason = underlyingError.userInfo[FBErrorLoginFailedReason];
-        if([loginFailingReason isEqualToString:@"com.facebook.sdk:SystemLoginDisallowedWithoutError"]){
-            return [NSError errorWithDomain:underlyingError.domain code:code userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Facebook: accounts access error description"),
-                                                                                        NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow Cirqle to access your Facebook accounts from your device's privacy settings", @"Facebook: accounts access error recovery suggestion")}];
-        }
-        else{
-            return underlyingError;
+            UIActionSheet* selectionSheet = [UIActionSheet bk_actionSheetWithTitle:NSLocalizedString(@"Twitter accounts", @"Twitter accounts selection sheet title")];
+            [accounts eachWithIndex:^(ACAccount *account, NSUInteger index) 
+            {
+            	[selectionSheet addButtonWithTitle:account.username handler:^{
+            		callback(account);
+            	}]
+            }];
+            [selectionSheet setCancelButtonWithTitle:NSLocalizedString(@"Cancel", @"Twiter accounts selection cancel") handler:^{
+            	callback(nil);
+            }]
+            selectionSheet.destructiveButtonIndex = [accounts count];
+            [selectionSheet showInView:[UIApplication sharedApplication].keyWindow];
         }
     }
     else{
-        return underlyingError;
-    }				
+        callback(nil);
+    }
 							</string>
 							<key>End</key>
 							<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
+						<key>Classes/TwitterServiceObjectManager.m:method:defaultErrorForCode</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)logInWithCallback:(CQServiceAuthInfoBlock)callback permissions:(ServicePermissionSet)permissions
+							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
 {
-	void(^localCallback)(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error){
-        if(FB_ISSESSIONOPENWITHSTATE(status) &amp;&amp;
-           error == nil)
-           	{
-           		DDLogInfo(@"Facebook login succes");
-           		NSMutableDictionary *result = [@{} mutableCopy];
-           		if(session.accessTokenData.accessToken)
-           		{
-           			result[kFacebookAccessTokenKey] = session.accessTokenData.accessToken;
-           		}
-           		if(session.accessTokenData.expirationDate)
-           		{
-           			result[kFacebookExpirationDateKeyKey] = session.accessTokenData.expirationDate;
-           		}
-           		BLOCK_SAFE_RUN(callback, result, error);
+	if(code == 7)
+	{
+        return [NSError errorWithDomain:CQNetworkingServiceErrorDomain
+                                                   code:code
+                                               userInfo:@{NSLocalizedDescriptionKey:CQLoc(@"No Twitter accounts found"),
+                                                          NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, set up at least one account in your device's settings in order to share in Twitter", @"Twitter login error: no accounts found recovery suggestion")}];
+    }
+    else if(code == 6 || !underlyingError)
+    {
+        return [NSError errorWithDomain:CQNetworkingServiceErrorDomain
+                                                            code:6
+                                                        userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Twitter: accounts access error description"),
+                                                                                                                                                      NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow ___PROJECTNAME___ to access your Twitter accounts from your device's privacy settings", @"TWitter: accounts access error recovery suggestion")}];
+    }
+    else		
+    {
+    	return underlyingError;
+    }		
+							</string>
+							<key>End</key>
+							<string>}</string>
+						</dict>
+
+						<key>Classes/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions
+{
+    [self selectTwitterAccountIndexFromAccounts:accounts withCallback:^(ACAccount *account) {
+        if(account){
+            [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accessToken, NSError *tokenObtainingError) {
+                
+                if(accessToken.length>0){
+                    CQTwitterAuthInfo *authInfo = [CQTwitterAuthInfo createInContext:[NSManagedObjectContext defaultContext]];
+                    authInfo.authToken = [[[accessToken componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
+                    authInfo.tokenSecret = [[[NSRegularExpression regularExpressionWithPattern:@"oauth_token_secret=(\\w+?)&" options:NSRegularExpressionCaseInsensitive error:nil] matchesSubsctringsInString:accessToken options:0 range:NSMakeRange(0, accessToken.length)] lastObject];
+                    authInfo.userAccount = account;
+                    authInfo.permissions = @(ServicePermissionSetWrite);
+                    authInfo.accountName = account.username;
+                    
+                    [super logInWithCallback:nil permissions:permissions];
+                    BLOCK_SAFE_RUN(callback, authInfo, nil);
+                }
+                else{
+                    NSError *tokenError = [self defaultErrorForCode:CQNetworkingServiceErrorCodeAuthError underlyingError:tokenObtainingError];
+                    if(callback)
+                        callback(nil, tokenError);
+                }
+            }];
         }
-        else
-        {
-            
-            DDLogWarn(@"Facebook login failed: %@", [error description]);
-            BLOCK_SAFE_RUN(callback, nil, error);
+        else{
+            //User didn't choose an account by tapping on the dismiss button inside the sheet - do nothing:
+            if(callback)
+                callback(nil, nil);
         }
+    }];
+								
+							</string>
+						</dict>
+
+						<key>Classes/TwitterServiceObjectManager.m:method:logInWithCallback</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)logInWithCallback:(void^(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions
+{
+	ACAccountStore *accountStore = [TwitterServiceObjectManager sharedTwitterAccountStore];
+    ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error)
+    {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if(granted) 
+            {
+                ACAccountType *accountTypeTwitter = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+                NSArray* accounts = [accountStore accountsWithAccountType:accountTypeTwitter];
+                
+                if(accounts.count == 0)
+                {
+                	BLOCK_SAFE_RUN(callback, nil, [self defaultErrorForCode:7 underlyingError:nil]);
+                }
+                else
+                {
+                    [self selectTwitterAccountIndexFromAccounts:accs withCallback:^(ACAccount *account) 
+                    {
+                        if(account)
+                        {
+                            [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accessToken, NSError *tokenObtainingError) {
+                                
+                                if(accessToken.length>0){
+                                    CQTwitterAuthInfo *authInfo = [CQTwitterAuthInfo createInContext:[NSManagedObjectContext defaultContext]];
+                                    authInfo.authToken = [[[accessToken componentsSeparatedByString:@"&"] first] substringFromIndex:12];
+                                    authInfo.tokenSecret = [[[NSRegularExpression regularExpressionWithPattern:@"oauth_token_secret=(\\w+?)&" options:NSRegularExpressionCaseInsensitive error:nil] matchesSubsctringsInString:accessToken options:0 range:NSMakeRange(0, accessToken.length)] lastObject];
+                                    authInfo.userAccount = account;
+                                    authInfo.permissions = @(ServicePermissionSetWrite);
+                                    authInfo.accountName = account.username;
+                                    
+                                    //call the super method to post the login notification
+                                    [super logInWithCallback:nil permissions:permissions];
+                                    BLOCK_SAFE_RUN(callback, authInfo, nil);
+                                }
+                                else{
+                                    NSError *tokenError = [self defaultErrorForCode:CQNetworkingServiceErrorCodeAuthError underlyingError:tokenObtainingError];
+                                    if(callback)
+                                        callback(nil, tokenError);
+                                }
+                            }];
+                        }
+                        else{
+                            //User didn't choose an account by tapping on the dismiss button inside the sheet - do nothing:
+                            if(callback)
+                                callback(nil, nil);
+                        }
+                    }];
+                }
+                
+            }
+            else{
+                NSError *accountStoreError = nil;
+                if(error.code == 7){
+                    accountStoreError = [self noTwitterAccountsError];
+                }
+                else if(error.code == 6 || !error){
+                    NSDictionary *noAccessErrorInfo = ;
+                    accountStoreError = [NSError errorWithDomain:CQNetworkingServiceErrorDomain
+                                                            code:6
+                                                        userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Twitter: accounts access error description"),
+                                                                                                                                                      NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow Cirqle to access your Twitter accounts from your device's privacy settings", @"TWitter: accounts access error recovery suggestion")}];
+                }
+                if(callback)
+                    callback(nil, accountStoreError);
+            }
+        });
     };
     
-    switch (permissions) 
-    {
-        case ServicePermissionSetRead:
-        {
-            [FBSession openActiveSessionWithReadPermissions:nil
-                                                  allowLoginUI:YES
-                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
-                                             {
-                                                 localCallback(session, status, permissions, error);
-                                             }];
-            break;
-        }
-        case ServicePermissionSetWrite:
-        {
-        	if(FB_ISSESSIONOPENWITHSTATE(status))
-        	{
-        		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
-												       		{
-												                localCallback(session, session.state, permissions, error);
-												            }];
-        	}
-        	else
-        	{
-        		[FBSession openActiveSessionWithReadPermissions:nil
-                                                  allowLoginUI:YES
-                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
-                                             {
-                                             	if(FB_ISSESSIONOPENWITHSTATE(status) &amp;&amp;
-           										   error == nil)
-           										   	{
-           										   		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
-												       		{
-												                localCallback(session, session.state, permissions, error);
-												            }];
-           										   	}
-           										   	else
-           										   	{
-           										   		localCallback(session, status, permissions, error);
-           										   	}
-                                             }];
-        	}
-            break;
-        }
-        default:
-            break;
-    }
+    //preform accounts request with prepared callback:
+    ACAccountType *accountTypeTwitter =[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    [accountStore requestAccessToAccountsWithType:accountTypeTwitter options:nil completion:handler];
 							</string>
 							<key>End</key>
 							<string>}</string>

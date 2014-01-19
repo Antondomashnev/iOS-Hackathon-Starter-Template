@@ -182,7 +182,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
         NSString *loginFailingReason = underlyingError.userInfo[FBErrorLoginFailedReason];
         if([loginFailingReason isEqualToString:@"com.facebook.sdk:SystemLoginDisallowedWithoutError"]){
             return [NSError errorWithDomain:underlyingError.domain code:code userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Facebook: accounts access error description"),
-                                                                                        NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow Cirqle to access your Facebook accounts from your device's privacy settings", @"Facebook: accounts access error recovery suggestion")}];
+                                                                                        NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow ___PROJECTNAME___ to access your Facebook accounts from your device's privacy settings", @"Facebook: accounts access error recovery suggestion")}];
         }
         else{
             return underlyingError;
@@ -199,9 +199,9 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)logInWithCallback:(CQServiceAuthInfoBlock)callback permissions:(ServicePermissionSet)permissions
+							<string>- (void)logInWithCallback:(void^(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions
 {
-	void(^localCallback)(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState status, ServicePermissionSet permissions, NSError *error){
+	void(^localCallback)(FBSession *session, FBSessionState status, ServiceObjectManagerPermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState status, ServiceObjectManagerPermissionSet permissions, NSError *error){
         if(FB_ISSESSIONOPENWITHSTATE(status) &amp;&amp;
            error == nil)
            	{
