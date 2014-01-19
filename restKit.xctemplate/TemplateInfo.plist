@@ -49,6 +49,12 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___APIBaseURLString = @"&lt;#
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
 	
+NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
+{
+    ServiceObjectManagerPermissionSetRead = 1,
+    ServiceObjectManagerPermissionSetWrite = 2
+};
+
 @interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;
 @end
