@@ -47,7 +47,7 @@
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
 	
-@interface ServiceHelper()
+@interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;
 @end
 
@@ -77,12 +77,12 @@
 		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
 		<dict>
 			<key>Beginning</key>
-			<string>+ (id)sharedManager
+			<string>+ (instancetype)sharedManager
 {
 	methodNotImplemented();
 			</string>
 			<key>End</key>
-			<string>}</string>
+			<string>}<</string>
 		</dict>
 	</dict>
 	<key>Description</key>
@@ -98,6 +98,7 @@
 		<string>Classes/ServiceObjectManager.h</string>
 		<string>Classes/ServiceObjectManager.m</string>
 		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/ServiceObjectManager.m:method:sharedManager</string>
 	</array>
 	<key>Options</key>
 	<array>
