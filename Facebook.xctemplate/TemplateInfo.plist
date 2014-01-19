@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>com.antondomashnev.template.hackathonApplication.Facebook</string>
+	<key>Name</key>
+	<string>Facebook Dependency</string>
+	<key>Ancestors</key>
+	<array>
+	</array>
+	<key>Definitions</key>
+	<dict> 
+		<key>../Podfile:Facebook-iOS-SDK</key>
+		<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
+
+		<key>Classes/FacebookServiceObjectManager.h</key>
+		<dict>
+			<key>Beginning</key>
+			<string>#import "ServiceObjectManager.h"
+#import &lt;FacebookSDK/FacebookSDK.h&gt;
+
+@interface FacebookServiceObjectManager : ServiceObjectManager
+
+			</string>
+			<key>End</key>
+			<string>@end</string>
+			<key>Group</key>
+			<string>Networking</string>
+		</dict>
+
+		<key>Classes/FacebookServiceObjectManager.m</key>
+		<dict>
+			<key>Beginning</key>
+			<string>#import "FacebookServiceObjectManager.h"
+
+@implementation ServiceObjectManager
+			</string>
+			<key>End</key>
+			<string>@end</string>
+			<key>Group</key>
+			<string>Networking</string>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:initWithHTTPClient</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName
+{
+	if(self = [super initWithHTTPClient:client]){
+        self.serviceName = serviceName;
+    }
+
+    return self;
+    		</string>
+    		<key>End</key>
+    		<string>}</string>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
+		<dict>
+			<key>Beginning</key>
+			<string>+ (instancetype)sharedManager
+{
+	methodNotImplemented();
+			</string>
+			<key>End</key>
+			<string>}<</string>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string></string>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Nodes</key>
+	<array>
+		<string>../Podfile:RestKit</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
+		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
+		<string>Classes/ServiceObjectManager.h</string>
+		<string>Classes/ServiceObjectManager.m</string>
+		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/ServiceObjectManager.m:method:sharedManager</string>
+	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Default</key>
+			<string>false</string>
+			<key>Description</key>
+			<string>Whether the application should use the Core Data framework for storage</string>
+			<key>Identifier</key>
+			<string>coreData</string>
+			<key>Name</key>
+			<string>Use Core Data</string>
+			<key>SortOrder</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Units</key>
+			<dict>
+				<key>true</key>
+				<dict>
+					<key>Definitions</key>
+					<dict>
+						<key>../Podfile:MagicalRecord</key>
+            			<string>pod &quot;MagicalRecord&quot;, &quot;~> 2.2&quot;</string>
+
+            			<key>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</key>
+            			<string>#import &lt;CoreData/CoreData.h&gt;</string>
+
+            			<key>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</key>
+            			<string>#define MR_SHORTHAND</string>
+
+            			<key>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</key>
+						<dict>
+							<key>Path</key>
+							<string>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
+              				<key>Group</key>
+              				<string>Models</string>
+						</dict>
+
+						<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</key>
+						<dict>
+							<key>Beginning</key>
+							<string>
+@interface NSManagedObjectContext (MRDefaultContextSetter)
++(void) MR_setDefaultContext:(NSManagedObjectContext*)context;
++(void) MR_setRootSavingContext:(NSManagedObjectContext*)context;
++(void) MR_cleanUp;
+							</string>
+							<key>End</key>
+							<string>
+@end
+							</string>
+						</dict>
+
+						<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)initializeCoreData
+{
+	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"___PACKAGENAMEASIDENTIFIER___DataModel" ofType:@"momd"]];
+    NSAssert(modelURL != nil, @"Unable to find DataModel in main bundle");
+
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:[ApplicationManager coreDataDatabaseName]];
+    NSError *error = nil;
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&amp;error];
+    if(!error){
+        [managedObjectStore createManagedObjectContexts];
+        // Configure MagicalRecord to use RestKit's Core Data stack
+        [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
+        [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
+        [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
+	}
+   							</string>
+   							<key>End</key>
+							<string>
+}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+					</dict>
+					<key>Nodes</key>
+					<array>
+						<string>../Podfile:MagicalRecord</string>
+						<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
+						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
+						<string>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
+						<string>Classes/ServiceObjectManager.h</string>
+						<string>Classes/ServiceObjectManager.m</string>
+					</array>
+					<key>Targets</key>
+					<array>
+						<dict>
+							<key>Frameworks</key>
+							<array>
+								<string>CoreData</string>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+	<key>SortOrder</key>
+	<integer>1</integer>
+</dict>
+</plist>
