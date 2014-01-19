@@ -34,6 +34,8 @@ NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
     ServiceObjectManagerPermissionSetWrite = 2
 };
 
+extern NSString * const kServiceAccessTokenKey;
+
 @interface ServiceObjectManager : RKObjectManager
 
 @property (nonatomic, strong, readonly) NSString *serviceName;
@@ -53,6 +55,8 @@ NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
 		<dict>
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
+
+NSString * const kServiceAccessTokenKey = @"___PROJECTNAME___.kServiceObjectManager";
 
 @interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;

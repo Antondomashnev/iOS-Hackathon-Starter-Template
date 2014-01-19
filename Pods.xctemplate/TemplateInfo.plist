@@ -21,8 +21,8 @@
 		<string>pod &quot;JRSwizzle&quot;, &quot;~>1.0&quot;</string>
 		<key>../Podfile:SVPullToRefresh</key>
 		<string>pod &quot;SVPullToRefresh&quot;, &quot;~>1.0&quot;</string>
-		<key>../Podfile:UIAlertViewBlocks</key>
-		<string>pod &quot;UIAlertView+Blocks&quot;, &quot;~>1.0&quot;</string>
+		<key>../Podfile:BlocksKit</key>
+		<string>pod &quot;BlocksKit&quot;, &quot;~>2.0.0&quot;</string>
 
 		<key>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</key>
 		<string>#import &lt;FrameAccessor/FrameAccessor.h&gt;</string>

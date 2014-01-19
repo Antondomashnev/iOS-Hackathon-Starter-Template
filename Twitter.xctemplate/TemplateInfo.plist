@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Identifier</key>
-	<string>com.antondomashnev.template.hackathonApplication.Facebook</string>
+	<string>com.antondomashnev.template.hackathonApplication.Twitter</string>
 	<key>Name</key>
 	<string>Facebook Dependency</string>
 	<key>Ancestors</key>
@@ -22,11 +22,11 @@
 			<key>Default</key>
 			<string>false</string>
 			<key>Description</key>
-			<string>Whether the application should use support Facebook authorization and other</string>
+			<string>Whether the application should use support Twitter authorization and other</string>
 			<key>Identifier</key>
 			<string>coreData</string>
 			<key>Name</key>
-			<string>Enable Facebook</string>
+			<string>Enable Twitter</string>
 			<key>SortOrder</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -37,15 +37,15 @@
 				<dict>
 					<key>Definitions</key>
 					<dict> 
-						<key>../Podfile:Facebook-iOS-SDK</key>
-						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
-
-						<key>Classes/FacebookServiceObjectManager.h</key>
+						<key>Classes/TwitterServiceObjectManager.h</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#import "ServiceObjectManager.h"
 
-@interface FacebookServiceObjectManager : ServiceObjectManager
+extern NSString *const kTwitterKey;
+extern NSString *const kTwitterSecret;
+
+@interface TwitterServiceObjectManager : ServiceObjectManager
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -53,19 +53,16 @@
 							<string>Networking</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m</key>
+						<key>Classes/TwitterServiceObjectManager.m</key>
 						<dict>
 							<key>Beginning</key>
-							<string>#import "FacebookServiceObjectManager.h"
-#import &lt;FacebookSDK/FacebookSDK.h&gt;
+							<string>#import "TwitterServiceObjectManager.h"
+#import "TWAPIManager.h"
 
-static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
-static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
+NSString *const TwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
+NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 
-NSString * const kFacebookAccessTokenKey = @"___PROJECTNAME___.kFacebookAccessTokenKey";
-NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookExpirationDateKeyKey";
-
-@implementation FacebookServiceObjectManager
+@implementation TwitterServiceObjectManager
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -73,13 +70,12 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<string>Networking</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
+						<key>Classes/TwitterServiceObjectManager.m:method:initWithServiceName</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (id)initWithHTTPClient:(AFHTTPClient *)client
+							<string>- (id)initWithServiceName:(NSString *)serviceName
 {
-    self = [super initWithHTTPClient:client serviceName:@"Facebook"];
-    if(self)
+    if(self = [super initWithServiceName: serviceName])
     {
 				    		</string>
 				    		<key>End</key>
@@ -90,14 +86,14 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 				    		</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:sharedManager</key>
+						<key>Classes/TwitterServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
-							<string>static FacebookHelper *sharedInstance;
+							<string>static TwitterHelper *sharedInstance;
 + (instacetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedInstance = [[FacebookServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:kFacebookBaseURL]]];
+        sharedInstance = [[TwitterServiceObjectManager alloc] initWithServiceName:@"Twitter"];
     });
 							</string>
 							<key>End</key>
@@ -107,38 +103,37 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</key>
+						<key>Classes/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
 						<dict>
 							<key>Beginning</key>
-							<string>#pragma mark - Helpers
-- (NSDictionary *)completeRequestParametersForParameters:(NSDictionary *)params
+							<string>#pragma mark - Authorization Helpers
+- (void)obtainAccessTokenForAcount:(ACAccount *)account usingCallback:(void(^)(NSString *accessToken, NSError *error))callback
 {
-	NSMutableDictionary *fullParameters = [NSMutableDictionary new];
-    if(params)
-    {
-        [fullParameters setValuesForKeysWithDictionary:params];
-    }
-    if([FBSession activeSession].accessTokenData.accessToken)
-    {
-        fullParameters[@"access_token"] = [FBSession activeSession].accessTokenData.accessToken;
-    }
+	TWAPIManager *apiManager = [[TWAPIManager alloc] init];
+    
+    [apiManager
+     performReverseAuthForAccount:account
+     withHandler:^(NSData *responseData, NSError *error) {
+         NSString *token = nil;
+         if (responseData) {
+             token = [[NSString alloc]
+                      initWithData:responseData
+                      encoding:NSUTF8StringEncoding];
+         }
+         if(callback)
+             callback(token, error);
+     }];
 				    		</string>
 				    		<key>End</key>
-				    		<string>
-    return fullParameters;
-}
-							</string>
+				    		<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</key>
+						<key>Classes/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</key>
 						<dict>
 							<key>Beginning</key>
-							<string>#pragma mark - RKObjectManager
-- (id)appropriateObjectRequestOperationWithObject:(id)object
-                                           method:(RKRequestMethod)method
-                                             path:(NSString *)path
-                                       parameters:(NSDictionary *)parameters
+							<string>- (void)selectTwitterAccountIndexFromAccounts:(NSArray*)accounts withCallback:(void(^)(ACAccount* account))callback
 {
+	
 							</string>
 							<key>End</key>
 							<string>        
@@ -209,9 +204,12 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
            		NSMutableDictionary *result = [@{} mutableCopy];
            		if(session.accessTokenData.accessToken)
            		{
-           			result[kServiceAccessTokenKey] = session.accessTokenData.accessToken;
+           			result[kFacebookAccessTokenKey] = session.accessTokenData.accessToken;
            		}
-
+           		if(session.accessTokenData.expirationDate)
+           		{
+           			result[kFacebookExpirationDateKeyKey] = session.accessTokenData.expirationDate;
+           		}
            		BLOCK_SAFE_RUN(callback, result, error);
         }
         else
