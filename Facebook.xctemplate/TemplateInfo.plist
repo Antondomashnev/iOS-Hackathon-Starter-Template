@@ -149,6 +149,30 @@ static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 }
 							</string>
 						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)openSessionIfTokenLoaded
+{
+    if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded){
+        
+        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]]){
+            [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
+                                               allowLoginUI:YES
+                                          completionHandler:nil];
+        }
+        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]]){
+            [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
+                                               defaultAudience:FBSessionDefaultAudienceEveryone
+                                                  allowLoginUI:YES
+                                             completionHandler:nil];
+        }
+    }
+							</string>
+							<key>End</key>
+							<string>{</string>
+						</dict>
 					</dict>
 					<key>Nodes</key>
 					<array>
