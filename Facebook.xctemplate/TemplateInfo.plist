@@ -50,7 +50,11 @@
 							<key>End</key>
 							<string>@end</string>
 							<key>Group</key>
-							<string>Networking</string>
+							<array>
+								<string>Networking</string>
+								<string>Facebook</string>
+							</array>
+							
 						</dict>
 
 						<key>Classes/FacebookServiceObjectManager.m</key>
@@ -69,8 +73,10 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 							<key>End</key>
 							<string>@end</string>
-							<key>Group</key>
-							<string>Networking</string>
+							<array>
+								<string>Networking</string>
+								<string>Facebook</string>
+							</array>
 						</dict>
 
 						<key>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
