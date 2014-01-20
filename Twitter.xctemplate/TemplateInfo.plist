@@ -358,7 +358,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)logInWithCallback:(void^(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions
+							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void(^)(NSDictionary*, NSError*))callback
 {
 	ACAccountStore *accountStore = [TwitterServiceObjectManager sharedTwitterAccountStore];
     ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error)

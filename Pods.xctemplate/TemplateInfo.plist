@@ -33,6 +33,10 @@
 		<string>#import &lt;FrameAccessor/FrameAccessor.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:ObjectiveSugar</key>
 		<string>#import &lt;ObjectiveSugar/ObjectiveSugar.h&gt;</string>
+		<key>___PACKAGENAME___-Prefix.pch:objC:BlocksKit</key>
+		<string>#import &lt;BlocksKit/BlocksKit.h&gt;</string>
+		<key>___PACKAGENAME___-Prefix.pch:objC:TBMacros</key>
+		<string>#import &lt;TBMacros/TBMacros.h&gt;</string>
 	</dict>
 	<key>Description</key>
 	<string></string>
@@ -50,6 +54,8 @@
 		<string>../Podfile:TBMacros</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:ObjectiveSugar</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:BlocksKit</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:TBMacros</string>
 	</array>
 	<key>Options</key>
 	<array>
