@@ -26,7 +26,7 @@
 
 #import "OAuthCore.h"
 #import "TWSignedRequest.h"
-#import "TwitterHelper.h"
+#import "TwitterServiceObjectManager.h"
 
 #define TW_HTTP_METHOD_GET @"GET"
 #define TW_HTTP_METHOD_POST @"POST"
@@ -124,17 +124,17 @@
 // OBFUSCATE YOUR KEYS!
 + (NSString *)consumerKey
 {
-    NSAssert([TwitterKey length] > 0,
+    NSAssert([kTwitterKey length] > 0,
              @"You must enter your consumer key in Build Settings.");
-    return TwitterKey;
+    return kTwitterKey;
 }
 
 // OBFUSCATE YOUR KEYS!
 + (NSString *)consumerSecret
 {
-    NSAssert([TwitterSecret length] > 0,
+    NSAssert([kTwitterSecret length] > 0,
              @"You must enter your consumer secret in Build Settings.");
-    return TwitterSecret;
+    return kTwitterSecret;
 }
 
 @end

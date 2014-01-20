@@ -42,7 +42,10 @@
                             <key>Path</key>
                             <string>ABOAuthCore/OAuth+Additions.h</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>ABOAuthCore/OAuth+Additions.m</key>
@@ -50,7 +53,10 @@
                             <key>Path</key>
                             <string>ABOAuthCore/OAuth+Additions.m</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>ABOAuthCore/OAuthCore.h</key>
@@ -58,7 +64,10 @@
                             <key>Path</key>
                             <string>ABOAuthCore/OAuthCore.h</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>ABOAuthCore/OAuthCore.m</key>
@@ -66,7 +75,10 @@
                             <key>Path</key>
                             <string>ABOAuthCore/OAuthCore.m</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>TWAPIManager.h</key>
@@ -74,7 +86,10 @@
                             <key>Path</key>
                             <string>TWAPIManager.h</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>TWAPIManager.m</key>
@@ -82,7 +97,10 @@
                             <key>Path</key>
                             <string>TWAPIManager.m</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>TWSignedRequest.h</key>
@@ -90,7 +108,10 @@
                             <key>Path</key>
                             <string>TWSignedRequest.h</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
                         <key>TWSignedRequest.m</key>
@@ -98,7 +119,10 @@
                             <key>Path</key>
                             <string>TWSignedRequest.m</string>
                             <key>Group</key>
-                            <string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
                         </dict>
 
 						<key>Classes/TwitterServiceObjectManager.h</key>
@@ -114,7 +138,10 @@ extern NSString *const kTwitterSecret;
 							<key>End</key>
 							<string>@end</string>
 							<key>Group</key>
-							<string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
 						</dict>
 
 						<key>Classes/TwitterServiceObjectManager.m</key>
@@ -123,15 +150,18 @@ extern NSString *const kTwitterSecret;
 							<string>#import "TwitterServiceObjectManager.h"
 #import "TWAPIManager.h"
 
-NSString *const TwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
-NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
+NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
+NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 
 @implementation TwitterServiceObjectManager
 							</string>
 							<key>End</key>
 							<string>@end</string>
 							<key>Group</key>
-							<string>Networking</string>
+                            <array>
+                            	<string>Networking</string>
+                            	<string>Twitter</string>
+                            </array>
 						</dict>
 
 						<key>Classes/TwitterServiceObjectManager.m:method:initWithServiceName</key>
@@ -409,6 +439,17 @@ NSString *const TwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
                         <string>Classes/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</string>
                         <string>Classes/TwitterServiceObjectManager.m:method:logInWithCallback</string>
 					</array>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>Frameworks</key>
+                            <array>
+                                <string>Accounts</string>
+                                <string>Social</string>
+                                <string>Twitter</string>
+                            </array>
+                        </dict>
+                    </array>
 				</dict>
 			</dict>
 		</dict>
