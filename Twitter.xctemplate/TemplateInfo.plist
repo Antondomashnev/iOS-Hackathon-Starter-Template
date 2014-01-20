@@ -37,7 +37,7 @@
 				<dict>
 					<key>Definitions</key>
 					<dict> 
-                        <key>ABOAuthCore/OAuth+Additions.h</key>
+                        <key>Classes/Networking/Twitter/OAuth+Additions.h</key>
                         <dict>
                             <key>Path</key>
                             <string>ABOAuthCore/OAuth+Additions.h</string>
@@ -48,7 +48,7 @@
                             </array>
                         </dict>
 
-                        <key>ABOAuthCore/OAuth+Additions.m</key>
+                        <key>Classes/Networking/Twitter/OAuth+Additions.m</key>
                         <dict>
                             <key>Path</key>
                             <string>ABOAuthCore/OAuth+Additions.m</string>
@@ -59,7 +59,7 @@
                             </array>
                         </dict>
 
-                        <key>ABOAuthCore/OAuthCore.h</key>
+                        <key>Classes/Networking/Twitter/OAuthCore.h</key>
                         <dict>
                             <key>Path</key>
                             <string>ABOAuthCore/OAuthCore.h</string>
@@ -70,7 +70,7 @@
                             </array>
                         </dict>
 
-                        <key>ABOAuthCore/OAuthCore.m</key>
+                        <key>Classes/Networking/Twitter/OAuthCore.m</key>
                         <dict>
                             <key>Path</key>
                             <string>ABOAuthCore/OAuthCore.m</string>
@@ -81,7 +81,7 @@
                             </array>
                         </dict>
 
-                        <key>TWAPIManager.h</key>
+                        <key>Classes/Networking/Twitter/TWAPIManager.h</key>
                         <dict>
                             <key>Path</key>
                             <string>TWAPIManager.h</string>
@@ -92,7 +92,7 @@
                             </array>
                         </dict>
 
-                        <key>TWAPIManager.m</key>
+                        <key>Classes/Networking/Twitter/TWAPIManager.m</key>
                         <dict>
                             <key>Path</key>
                             <string>TWAPIManager.m</string>
@@ -103,7 +103,7 @@
                             </array>
                         </dict>
 
-                        <key>TWSignedRequest.h</key>
+                        <key>Classes/Networking/Twitter/TWSignedRequest.h</key>
                         <dict>
                             <key>Path</key>
                             <string>TWSignedRequest.h</string>
@@ -114,7 +114,7 @@
                             </array>
                         </dict>
 
-                        <key>TWSignedRequest.m</key>
+                        <key>Classes/Networking/Twitter/TWSignedRequest.m</key>
                         <dict>
                             <key>Path</key>
                             <string>TWSignedRequest.m</string>
@@ -125,7 +125,7 @@
                             </array>
                         </dict>
 
-						<key>Classes/TwitterServiceObjectManager.h</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.h</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#import "ServiceObjectManager.h"
@@ -144,7 +144,7 @@ extern NSString *const kTwitterSecret;
                             </array>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#import "TwitterServiceObjectManager.h"
@@ -164,7 +164,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
                             </array>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:initWithServiceName</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (id)initWithServiceName:(NSString *)serviceName
@@ -180,7 +180,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 				    		</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:sharedManager</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
 							<string>static TwitterHelper *sharedInstance;
@@ -197,7 +197,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</key>
 						<dict>
 							<key>Beginning</key>
 							<string> static __strong ACAccountStore *store;
@@ -214,7 +214,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - Authorization Helpers
@@ -241,7 +241,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 				    		<string>}</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)selectTwitterAccountIndexFromAccounts:(NSArray*)accounts withCallback:(void(^)(ACAccount* account))callback
@@ -275,7 +275,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							<string>}</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:defaultErrorForCode</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:defaultErrorForCode</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
@@ -302,7 +302,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							<string>}</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions
@@ -339,7 +339,7 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 							</string>
 						</dict>
 
-						<key>Classes/TwitterServiceObjectManager.m:method:logInWithCallback</key>
+						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)logInWithCallback:(void^(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions
@@ -420,24 +420,24 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 					</dict>
 					<key>Nodes</key>
 					<array>
-						<string>ABOAuthCore/OAuth+Additions.h</string>
-						<string>ABOAuthCore/OAuth+Additions.m</string>
-						<string>ABOAuthCore/OAuthCore.h</string>
-						<string>ABOAuthCore/OAuthCore.m</string>
-						<string>TWAPIManager.h</string>
-						<string>TWAPIManager.m</string>
-						<string>TWSignedRequest.h</string>
-						<string>TWSignedRequest.m</string>
-                        <string>Classes/TwitterServiceObjectManager.h</string>
-                        <string>Classes/TwitterServiceObjectManager.m</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:initWithServiceName</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:sharedManager</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:defaultErrorForCode</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</string>
-                        <string>Classes/TwitterServiceObjectManager.m:method:logInWithCallback</string>
+						<string>Classes/Networking/Twitter/OAuth+Additions.h</string>
+						<string>Classes/Networking/Twitter/OAuth+Additions.m</string>
+						<string>Classes/Networking/Twitter/OAuthCore.h</string>
+						<string>Classes/Networking/Twitter/OAuthCore.m</string>
+						<string>Classes/Networking/Twitter/TWAPIManager.h</string>
+						<string>Classes/Networking/Twitter/TWAPIManager.m</string>
+						<string>Classes/Networking/Twitter/TWSignedRequest.h</string>
+						<string>Classes/Networking/Twitter/TWSignedRequest.m</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.h</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:defaultErrorForCode</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</string>
 					</array>
                     <key>Targets</key>
                     <array>
