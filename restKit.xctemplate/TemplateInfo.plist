@@ -15,7 +15,7 @@
 		<string>pod &quot;RestKit&quot;, &quot;~> 0.20.3&quot;</string>
 
 		<key>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</key>
-		<string>#import &lt;ystemConfiguration/SystemConfiguration&gt;</string>
+		<string>#import &lt;SystemConfiguration/SystemConfiguration.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
 		<string>#import &lt;MobileCoreServices/MobileCoreServices.h&gt;</string>
 

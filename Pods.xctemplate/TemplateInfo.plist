@@ -21,10 +21,13 @@
 		<string>pod &quot;JRSwizzle&quot;, &quot;~>1.0&quot;</string>
 		<key>../Podfile:SVPullToRefresh</key>
 		<string>pod &quot;SVPullToRefresh&quot;, &quot;~>0.4&quot;</string>
+		<key>../Podfile:NSData+Base64</key>
+		<string>pod &quot;NSData+Base64&quot;, &quot;~>1.0&quot;</string>
 		<key>../Podfile:BlocksKit</key>
 		<string>pod &quot;BlocksKit&quot;, &quot;~>2.0.0&quot;</string>
 		<key>../Podfile:TBMacros</key>
 		<string>pod &quot;TBMacros&quot;, :git => &quot;https://github.com/Antondomashnev/TBMacros&quot;, :commit => &quot;2e2efddb5588c0187d14a56b2ae40d0ea908b49c&quot;</string>
+
 
 		<key>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</key>
 		<string>#import &lt;FrameAccessor/FrameAccessor.h&gt;</string>

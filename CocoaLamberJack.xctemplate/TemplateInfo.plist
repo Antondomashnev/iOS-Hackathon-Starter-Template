@@ -29,7 +29,6 @@
 			<string>Logging</string>
 		</dict>
 
-
 		<key>main.m:CocoaLumberjack:logLevel</key>
 		<string>
 #if DEBUG
@@ -65,6 +64,7 @@ int ddLogLevel = LOG_LEVEL_ERROR;
 		<string>___PACKAGENAME___-Prefix.pch:endif:ddLogLevel</string>
 		<string>main.m:CocoaLumberjack:logLevel</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
+		<string>DDLogProjectSettings.h</string>
 	</array>
 	<key>Options</key>
 	<array>
