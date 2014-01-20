@@ -19,6 +19,9 @@
 		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
 		<string>#import &lt;MobileCoreServices/MobileCoreServices.h&gt;</string>
 
+		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</key>
+		<string>#import &lt;RestKit/RestKit.h&gt;</string>
+
 		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</key>
 		<string>RKLogConfigureByName("RestKit/Network", RKLogLevelWarning);</string>
 
@@ -201,6 +204,7 @@ NSString * const kServiceAccessTokenKey = @"___PROJECTNAME___.kServiceObjectMana
 					<array>
 						<string>../Podfile:MagicalRecord</string>
 						<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
