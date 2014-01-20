@@ -38,12 +38,13 @@ NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
 };
 
 extern NSString * const kServiceAccessTokenKey;
+extern NSString * const kServiceTokenSecretKey;
 
 @interface ServiceObjectManager : RKObjectManager
 
 @property (nonatomic, strong, readonly) NSString *serviceName;
 
-+ (instancetype)sharedHelper;
++ (instancetype)sharedManager;
 - (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName;
 - (id)initWithServiceName:(NSString *)serviceName;
 - (void)logInWithCallback:(void (^)(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions;
@@ -60,6 +61,7 @@ extern NSString * const kServiceAccessTokenKey;
 			<string>#import "ServiceObjectManager.h"
 
 NSString * const kServiceAccessTokenKey = @"___PROJECTNAME___.kServiceObjectManager";
+NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecretKey";
 
 @interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;

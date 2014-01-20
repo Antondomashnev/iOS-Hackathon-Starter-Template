@@ -149,9 +149,11 @@ extern NSString *const kTwitterSecret;
 							<key>Beginning</key>
 							<string>#import "TwitterServiceObjectManager.h"
 #import "TWAPIManager.h"
+#import "UIActionSheet+BlocksKit.h"
 
 NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
 NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
+NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 
 @implementation TwitterServiceObjectManager
 							</string>
@@ -183,8 +185,8 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
-							<string>static TwitterHelper *sharedInstance;
-+ (instacetype)sharedManager{
+							<string>static TwitterServiceObjectManager *sharedInstance;
++ (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
         sharedInstance = [[TwitterServiceObjectManager alloc] initWithServiceName:@"Twitter"];
@@ -282,14 +284,14 @@ NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 {
 	if(code == 7)
 	{
-        return [NSError errorWithDomain:CQNetworkingServiceErrorDomain
+        return [NSError errorWithDomain:kTwitterServiceErrorDomain
                                                    code:code
-                                               userInfo:@{NSLocalizedDescriptionKey:CQLoc(@"No Twitter accounts found"),
+                                               userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"No Twitter accounts found", @"No Twitter Account error localized description"),
                                                           NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, set up at least one account in your device's settings in order to share in Twitter", @"Twitter login error: no accounts found recovery suggestion")}];
     }
     else if(code == 6 || !underlyingError)
     {
-        return [NSError errorWithDomain:CQNetworkingServiceErrorDomain
+        return [NSError errorWithDomain:kTwitterServiceErrorDomain
                                                             code:6
                                                         userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Twitter: accounts access error description"),NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow ___PROJECTNAME___ to access your Twitter accounts from your device's privacy settings", @"TWitter: accounts access error recovery suggestion")}];
     }
