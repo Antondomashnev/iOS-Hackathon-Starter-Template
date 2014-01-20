@@ -21,6 +21,15 @@
 		<key>___PACKAGENAME___-Prefix.pch:endif:ddLogLevel</key>
 		<string>extern int ddLogLevel;</string>
 
+		<key>DDLogProjectSettings.h</key>
+		<dict>
+			<key>Path</key>
+			<string>DDLogProjectSettings.h</string>
+			<key>Group</key>
+			<string>Logging</string>
+		</dict>
+
+
 		<key>main.m:CocoaLumberjack:logLevel</key>
 		<string>
 #if DEBUG

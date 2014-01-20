@@ -20,7 +20,7 @@
 		<key>../Podfile:JRSwizzle</key>
 		<string>pod &quot;JRSwizzle&quot;, &quot;~>1.0&quot;</string>
 		<key>../Podfile:SVPullToRefresh</key>
-		<string>pod &quot;SVPullToRefresh&quot;, &quot;~>1.0&quot;</string>
+		<string>pod &quot;SVPullToRefresh&quot;, &quot;~>0.4&quot;</string>
 		<key>../Podfile:BlocksKit</key>
 		<string>pod &quot;BlocksKit&quot;, &quot;~>2.0.0&quot;</string>
 		<key>../Podfile:TBMacros</key>
