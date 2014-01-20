@@ -45,7 +45,9 @@
 		<string>../Podfile:ObjectiveSugar</string>
 		<string>../Podfile:JRSwizzle</string>
 		<string>../Podfile:SVPullToRefresh</string>
-		<string>../Podfile:UIAlertViewBlocks</string>
+		<string>../Podfile:NSData+Base64</string>
+		<string>../Podfile:BlocksKit</string>
+		<string>../Podfile:TBMacros</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:ObjectiveSugar</string>
 	</array>
