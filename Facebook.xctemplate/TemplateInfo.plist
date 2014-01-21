@@ -99,7 +99,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<key>Classes/FacebookServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
-							<string>static FacebookHelper *sharedInstance;
+							<string>static FacebookServiceObjectManager *sharedInstance;
 + (instacetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{

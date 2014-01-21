@@ -157,6 +157,19 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<key>Indent</key>
 			<integer>1</integer>
 		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:logInWithPermissions</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary *, NSError *))callback
+{
+	METHOD_NOT_IMPLEMENTED();
+			</string>
+			<key>End</key>
+			<string>}</string>
+			<key>Indent</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>Description</key>
 	<string></string>
