@@ -198,6 +198,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 	return sharedInstance;
 }
 							</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</key>
@@ -215,6 +217,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 							<string>return store;
 }
 							</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
@@ -242,6 +246,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 				    		</string>
 				    		<key>End</key>
 				    		<string>}</string>
+				    		<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</key>
@@ -276,33 +282,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 							</string>
 							<key>End</key>
 							<string>}</string>
-						</dict>
-
-						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:defaultErrorForCode</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
-{
-	if(code == 7)
-	{
-        return [NSError errorWithDomain:kTwitterServiceErrorDomain
-                                                   code:code
-                                               userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"No Twitter accounts found", @"No Twitter Account error localized description"),
-                                                          NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, set up at least one account in your device's settings in order to share in Twitter", @"Twitter login error: no accounts found recovery suggestion")}];
-    }
-    else if(code == 6 || !underlyingError)
-    {
-        return [NSError errorWithDomain:kTwitterServiceErrorDomain
-                                                            code:6
-                                                        userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Twitter: accounts access error description"),NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow ___PROJECTNAME___ to access your Twitter accounts from your device's privacy settings", @"TWitter: accounts access error recovery suggestion")}];
-    }
-    else		
-    {
-    	return underlyingError;
-    }		
-							</string>
-							<key>End</key>
-							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</key>
@@ -351,6 +332,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 							</string>
 							<key>End</key>
 							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</key>
@@ -396,6 +379,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 							</string>
 							<key>End</key>
 							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 					</dict>
 					<key>Nodes</key>
@@ -415,7 +400,6 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</string>
-                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:defaultErrorForCode</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</string>
 					</array>
