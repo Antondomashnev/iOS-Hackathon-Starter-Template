@@ -211,6 +211,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
 						<string>Classes/ServiceObjectManager.h</string>
 						<string>Classes/ServiceObjectManager.m</string>

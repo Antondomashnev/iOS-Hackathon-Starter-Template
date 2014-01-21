@@ -258,13 +258,13 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
             UIActionSheet* selectionSheet = [UIActionSheet bk_actionSheetWithTitle:NSLocalizedString(@"Twitter accounts", @"Twitter accounts selection sheet title")];
             [accounts eachWithIndex:^(ACAccount *account, NSUInteger index) 
             {
-            	[selectionSheet addButtonWithTitle:account.username handler:^{
+            	[selectionSheet bk_addButtonWithTitle:account.username handler:^{
             		callback(account);
             	}]
             }];
-            [selectionSheet setCancelButtonWithTitle:NSLocalizedString(@"Cancel", @"Twiter accounts selection cancel") handler:^{
+            [selectionSheet bk_setCancelButtonWithTitle:NSLocalizedString(@"Cancel", @"Twiter accounts selection cancel") handler:^{
             	callback(nil);
-            }]
+            }];
             selectionSheet.destructiveButtonIndex = [accounts count];
             [selectionSheet showInView:[UIApplication sharedApplication].keyWindow];
         }
