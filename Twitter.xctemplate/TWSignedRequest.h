@@ -2,7 +2,7 @@
 //    TWSignedRequest.h
 //    TWiOSReverseAuthExample
 //
-//    Copyright (c) 2012 Sean Cook
+//    Copyright (c) 2013 Sean Cook
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a
 //    copy of this software and associated documentation files (the
@@ -34,9 +34,7 @@ enum TWSignedRequestMethod {
 
 typedef enum TWSignedRequestMethod TWSignedRequestMethod;
 
-typedef
-void(^TWSignedRequestHandler)
-(NSData *data, NSURLResponse *response, NSError *error);
+typedef void(^TWSignedRequestHandler) (NSData *data, NSURLResponse *response, NSError *error);
 
 @interface TWSignedRequest : NSObject
 
@@ -44,9 +42,7 @@ void(^TWSignedRequestHandler)
 @property (nonatomic, copy) NSString *authTokenSecret;
 
 // Creates a new request
-- (id)initWithURL:(NSURL *)url
-       parameters:(NSDictionary *)parameters
-    requestMethod:(TWSignedRequestMethod)requestMethod;
+- (id)initWithURL:(NSURL *)url parameters:(NSDictionary *)parameters requestMethod:(TWSignedRequestMethod)requestMethod;
 
 // Perform the request, and notify handler of results
 - (void)performRequestWithHandler:(TWSignedRequestHandler)handler;
