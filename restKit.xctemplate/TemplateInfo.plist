@@ -95,7 +95,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<key>Beginning</key>
 			<string>+ (instancetype)sharedManager
 {
-	methodNotImplemented();
+	METHOD_NOT_IMPLEMENTED();
 			</string>
 			<key>End</key>
 			<string>}</string>
