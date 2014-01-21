@@ -36,7 +36,7 @@
 		<key>___PACKAGENAME___-Prefix.pch:objC:BlocksKit</key>
 		<string>#import &lt;BlocksKit/BlocksKit.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:TBMacros</key>
-		<string>#import &lt;TBMacros/TBMacros.h&gt;</string>
+		<string>#import &lt;TBMacros/Macros.h&gt;</string>
 	</dict>
 	<key>Description</key>
 	<string></string>
