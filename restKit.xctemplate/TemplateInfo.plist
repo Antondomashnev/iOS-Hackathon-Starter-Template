@@ -232,7 +232,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
             			<string>pod &quot;MagicalRecord&quot;, &quot;~> 2.2&quot;</string>
 
             			<key>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</key>
-            			<string>#import &lt;CoreData/CoreData.h&gt;</string>
+            			<string>#import &lt;MagicalRecord/CoreData+MagicalRecord.h&gt;</string>
 
             			<key>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</key>
             			<string>#define MR_SHORTHAND</string>
@@ -270,7 +270,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:[ApplicationManager coreDataDatabaseName]];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:___PACKAGENAMEASIDENTIFIER___DataModel];
     NSError *error = nil;
     
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
