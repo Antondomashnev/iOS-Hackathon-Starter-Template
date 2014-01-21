@@ -150,6 +150,7 @@ extern NSString *const kTwitterSecret;
 							<string>#import "TwitterServiceObjectManager.h"
 #import "TWAPIManager.h"
 #import "UIActionSheet+BlocksKit.h"
+#import "RegExCategories.h"
 
 NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
 NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
