@@ -293,13 +293,13 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 {
     [self selectTwitterAccountIndexFromAccounts:accounts withCallback:^(ACAccount *account) {
         if(account){
-            [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accessToken, NSError *tokenObtainingError) {
+            [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accountInformationString, NSError *tokenObtainingError) {
                 
-                if(accessToken.length>0)
+                if(accountInformationString.length>0)
                 {
                     DDLogInfo(@"Twitter login success");
                     NSMutableDictionary *results = [@{} mutableCopy];
-                    NSString *accessToken = [[[accessToken componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
+                    NSString *accessToken = [[[accountInformationString componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
                     if(accessToken)
                     {
                         results[kServiceAccessTokenKey] = accessToken;
@@ -312,7 +312,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                     BLOCK_SAFE_RUN(callback, results, nil);
                 }
                 else{
-                    NSError *tokenError = [self defaultErrorForCode:CQNetworkingServiceErrorCodeAuthError underlyingError:tokenObtainingError];
+                    NSError *tokenError = [self errorForCode:ServiceObjectManagerErrorCodeAuthorizationError underlyingError:tokenObtainingError];
                     if(callback)
                     {
                         callback(nil, tokenError);

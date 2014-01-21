@@ -100,6 +100,23 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<integer>1</integer>
 		</dict>
 
+		<key>Classes/ServiceObjectManager.m:method:initWithServiceName</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (id)initWithServiceName:(NSString *)serviceName
+{
+	if(self = [super init]){
+        self.serviceName = serviceName;
+    }
+
+    return self;
+    		</string>
+    		<key>End</key>
+    		<string>}</string>
+    		<key>Indent</key>
+			<integer>1</integer>
+		</dict>
+
 		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
 		<dict>
 			<key>Beginning</key>
@@ -185,8 +202,10 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 		<string>Classes/ServiceObjectManager.h</string>
 		<string>Classes/ServiceObjectManager.m</string>
 		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/ServiceObjectManager.m:method:initWithServiceName</string>
 		<string>Classes/ServiceObjectManager.m:method:sharedManager</string>
 		<string>Classes/ServiceObjectManager.m:method:errorForCode</string>
+		<string>Classes/ServiceObjectManager.m:method:logInWithPermissions</string>
 	</array>
 	<key>Options</key>
 	<array>
