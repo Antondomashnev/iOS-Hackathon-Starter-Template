@@ -31,7 +31,7 @@
 			<string>#import &lt;Foundation/Foundation.h&gt;
 #import &lt;RestKit/RestKit.h&gt;
 
-NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
+typedef NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
 {
     ServiceObjectManagerPermissionSetRead = 1,
     ServiceObjectManagerPermissionSetWrite = 2
