@@ -261,7 +261,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
             {
             	[selectionSheet bk_addButtonWithTitle:account.username handler:^{
             		callback(account);
-            	}]
+            	}];
             }];
             [selectionSheet bk_setCancelButtonWithTitle:NSLocalizedString(@"Cancel", @"Twiter accounts selection cancel") handler:^{
             	callback(nil);
@@ -308,7 +308,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:handleAccessToTwitterAccountsGrant</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions
+							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void(^)(NSDictionary*, NSError*))callback
 {
     [self selectTwitterAccountIndexFromAccounts:accounts withCallback:^(ACAccount *account) {
         if(account){
@@ -316,17 +316,14 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                 
                 if(accessToken.length>0)
                 {
-                    
                     DDLogInfo(@"Twitter login success");
-                    
                     NSMutableDictionary *results = [@{} mutableCopy];
                     NSString *accessToken = [[[accessToken componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
                     if(accessToken)
                     {
                         results[kServiceAccessTokenKey] = accessToken;
                     }
-                    
-                    NSString *tokenSecret = [[[NSRegularExpression regularExpressionWithPattern:@"oauth_token_secret=(\\w+?)&amp;" options:NSRegularExpressionCaseInsensitive error:nil] matchesSubsctringsInString:accessToken options:0 range:NSMakeRange(0, accessToken.length)] lastObject];
+                    NSString *tokenSecret = [accessToken firstMatch:RX(@"oauth_token_secret=(\\w+?)&amp;")];
                     if(tokenSecret)
                     {
                         results[kServiceTokenSecretKey] = tokenSecret;
@@ -359,7 +356,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)handleAccessToTwitterAccountsGrant:(NSArray *)accounts withPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void(^)(NSDictionary*, NSError*))callback
+							<string>- (void)logInWithCallback:(void (^)(NSDictionary *, NSError *))callback permissions:(ServiceObjectManagerPermissionSet)permissions
 {
 	ACAccountStore *accountStore = [TwitterServiceObjectManager sharedTwitterAccountStore];
     ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error)
@@ -372,57 +369,23 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                 
                 if(accounts.count == 0)
                 {
-                	BLOCK_SAFE_RUN(callback, nil, [self defaultErrorForCode:7 underlyingError:nil]);
+                	BLOCK_SAFE_RUN(callback, nil, [self errorForCode:ServiceObjectManagerErrorCodeNoAccountsFoundError underlyingError:nil]);
                 }
                 else
                 {
-                    [self selectTwitterAccountIndexFromAccounts:accs withCallback:^(ACAccount *account) 
-                    {
-                        if(account)
-                        {
-                            [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accessToken, NSError *tokenObtainingError) {
-                                
-                                if(accessToken.length>0){
-                                    CQTwitterAuthInfo *authInfo = [CQTwitterAuthInfo createInContext:[NSManagedObjectContext defaultContext]];
-                                    authInfo.authToken = [[[accessToken componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
-                                    authInfo.tokenSecret = [[[NSRegularExpression regularExpressionWithPattern:@"oauth_token_secret=(\\w+?)&amp;" options:NSRegularExpressionCaseInsensitive error:nil] matchesSubsctringsInString:accessToken options:0 range:NSMakeRange(0, accessToken.length)] lastObject];
-                                    authInfo.userAccount = account;
-                                    authInfo.permissions = @(ServicePermissionSetWrite);
-                                    authInfo.accountName = account.username;
-                                    
-                                    //call the super method to post the login notification
-                                    [super logInWithCallback:nil permissions:permissions];
-                                    BLOCK_SAFE_RUN(callback, authInfo, nil);
-                                }
-                                else{
-                                    NSError *tokenError = [self defaultErrorForCode:CQNetworkingServiceErrorCodeAuthError underlyingError:tokenObtainingError];
-                                    if(callback)
-                                        callback(nil, tokenError);
-                                }
-                            }];
-                        }
-                        else{
-                            //User didn't choose an account by tapping on the dismiss button inside the sheet - do nothing:
-                            if(callback)
-                                callback(nil, nil);
-                        }
-                    }];
+                    [self handleAccessToTwitterAccountsGrant:accounts withPermissions:permissions callback:callback];
                 }
-                
             }
-            else{
+            else
+            {
                 NSError *accountStoreError = nil;
                 if(error.code == 7){
-                    accountStoreError = [self noTwitterAccountsError];
+                    accountStoreError = [self errorForCode:ServiceObjectManagerErrorCodeNoAccountsFoundError underlyingError:nil];
                 }
                 else if(error.code == 6 || !error){
-                    NSDictionary *noAccessErrorInfo = ;
-                    accountStoreError = [NSError errorWithDomain:CQNetworkingServiceErrorDomain
-                                                            code:6
-                                                        userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Accounts access error", @"Twitter: accounts access error description"),NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please, allow Cirqle to access your Twitter accounts from your device's privacy settings", @"TWitter: accounts access error recovery suggestion")}];
+                    accountStoreError = [self errorForCode:ServiceObjectManagerErrorCodeAccountsAccessError underlyingError:nil];
                 }
-                if(callback)
-                    callback(nil, accountStoreError);
+                BLOCK_SAFE_RUN(callback, nil, accountStoreError);
             }
         });
     };

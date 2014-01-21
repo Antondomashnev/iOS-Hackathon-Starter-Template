@@ -37,6 +37,13 @@ typedef NS_ENUM(NSInteger, ServiceObjectManagerPermissionSet)
     ServiceObjectManagerPermissionSetWrite = 2
 };
 
+typedef NS_ENUM(NSInteger, ServiceObjectManagerErrorCode)
+{
+    ServiceObjectManagerErrorCodeNoAccountsFoundError = 1,
+    ServiceObjectManagerErrorCodeAccountsAccessError = 2,
+    ServiceObjectManagerErrorCodeAuthorizationError = 3
+};
+
 extern NSString * const kServiceAccessTokenKey;
 extern NSString * const kServiceTokenSecretKey;
 
@@ -47,7 +54,8 @@ extern NSString * const kServiceTokenSecretKey;
 + (instancetype)sharedManager;
 - (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName;
 - (id)initWithServiceName:(NSString *)serviceName;
-- (void)logInWithCallback:(void (^)(NSDictionary*, NSError*))callback permissions:(ServiceObjectManagerPermissionSet)permissions;
+- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback;
+- (NSError *)errorForCode:(ServiceObjectManagerErrorCode)code underlyingError:(NSError *)error;
 			</string>
 			<key>End</key>
 			<string>@end</string>
@@ -88,6 +96,8 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
     		</string>
     		<key>End</key>
     		<string>}</string>
+    		<key>Indent</key>
+			<integer>1</integer>
 		</dict>
 
 		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
@@ -99,6 +109,53 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			</string>
 			<key>End</key>
 			<string>}</string>
+			<key>Indent</key>
+			<integer>1</integer>
+		</dict>
+
+		<key>Classes/ServiceObjectManager.m:method:errorForCode</key>
+		<dict>
+			<key>Beginning</key>
+			<string>#pragma mark - Interface
+- (NSError *)errorForCode:(ServiceObjectManagerErrorCode)code underlyingError:(NSError *)error
+{
+	NSString *serviceErrorDomain = [NSString stringWithFormat:@"%@ErrorDomain", NSStringFromClass([self class])];
+    switch (code) {
+        case ServiceObjectManagerErrorCodeAccountsAccessError:
+        {
+            return [NSError errorWithDomain:serviceErrorDomain
+                                code:code
+                            userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:NSLocalizedString(@"%@ accounts access error", @"%@ accounts access error description"), self.serviceName, self.serviceName],
+                                       NSLocalizedRecoverySuggestionErrorKey:[NSString stringWithFormat:NSLocalizedString(@"Please, allow TemplateTester to access your %@ accounts from your device's privacy settings", @"%@ accounts access error recovery suggestion"), self.serviceName, self.serviceName],
+                                       NSUnderlyingErrorKey:error ? error : [NSNull null]}];
+        }
+        case ServiceObjectManagerErrorCodeNoAccountsFoundError:
+        {
+            return [NSError errorWithDomain:serviceErrorDomain
+                                       code:code
+                                   userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:NSLocalizedString(@"No %@ accounts found", @"No %@ account error localized description"), self.serviceName, self.serviceName],
+                                              NSLocalizedRecoverySuggestionErrorKey:[NSString stringWithFormat:NSLocalizedString(@"Please, set up at least one %@ account in your device's settings", @"%@ no accounts found recovery suggestion"), self.serviceName, self.serviceName],
+                                              NSUnderlyingErrorKey:error ? error : [NSNull null]}];
+        }
+        case ServiceObjectManagerErrorCodeAuthorizationError:
+        {
+            return [NSError errorWithDomain:serviceErrorDomain
+                                       code:code
+                                   userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:NSLocalizedString(@"Authentication error", @"%@ authentication error localized description"), self.serviceName, self.serviceName],
+                                              NSLocalizedRecoverySuggestionErrorKey:[NSString stringWithFormat:NSLocalizedString(@"Please, try to relogin with your %@ account", @"%@ authentication error recovery suggestion"), self.serviceName, self.serviceName],
+                                              NSUnderlyingErrorKey:error ? error : [NSNull null]}];
+        }
+        default:
+        {
+            return error;
+        }
+    }
+
+			</string>
+			<key>End</key>
+			<string>}</string>
+			<key>Indent</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>Description</key>
@@ -110,11 +167,13 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 		<string>../Podfile:RestKit</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
+		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
 		<string>Classes/ServiceObjectManager.h</string>
 		<string>Classes/ServiceObjectManager.m</string>
 		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
 		<string>Classes/ServiceObjectManager.m:method:sharedManager</string>
+		<string>Classes/ServiceObjectManager.m:method:errorForCode</string>
 	</array>
 	<key>Options</key>
 	<array>
@@ -206,7 +265,6 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 					<array>
 						<string>../Podfile:MagicalRecord</string>
 						<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
-						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>
