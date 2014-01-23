@@ -122,7 +122,7 @@ static NSString *gTWConsumerSecret;
 // OBFUSCATE YOUR KEYS!
 + (NSString *)consumerSecret
 {
-    iNSAssert([kTwitterSecret length] > 0,
+    NSAssert([kTwitterSecret length] > 0,
               @"You must enter your consumer secret in TwitterServiceObjectManager.");
     return kTwitterSecret;
 }
