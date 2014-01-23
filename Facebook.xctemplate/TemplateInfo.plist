@@ -309,6 +309,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 
 	ACAccountStore *accountStore = [ACAccountStore new];
     ACAccountType *accountTypeFB = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+	NSArray *fbAccounts = [accountStore accountsWithAccountType:accountTypeFB];
     if (fbAccounts count] > 0)
     {
     	[accountStore renewCredentialsForAccount:fbAccounts[0] completion:modifiedCallback];
