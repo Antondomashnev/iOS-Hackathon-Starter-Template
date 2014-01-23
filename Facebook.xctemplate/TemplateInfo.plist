@@ -87,6 +87,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
     self = [super initWithHTTPClient:client serviceName:@"Facebook"];
     if(self)
     {
+
 				    		</string>
 				    		<key>End</key>
 				    		<string>
@@ -111,6 +112,33 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 	return sharedInstance;
 }
 							</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Permissions
++ (NSArray *)facebookServiceReadPermissions
+{
+	return @[@"&lt;# Read permission #&gt;", @"&lt;# Another read permission #&gt;"];							
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+												<key>Classes/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</key>
+						<dict>
+							<key>Beginning</key>
+							<string>+ (NSArray *)facebookServiceWritePermissions
+{
+	return @[@"&lt;# Write permission #&gt;", @"&lt;# Another write permission #&gt;"];							
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</key>
@@ -160,13 +188,13 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 {
     if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded){
         
-        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        if(![[FBSession activeSession].permissions containsObject:[[FacebookServiceObjectManager facebookServiceWritePermissions] firstObject]])
         {
             [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
                                                allowLoginUI:YES
                                           completionHandler:nil];
         }
-        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        else if([[FBSession activeSession].permissions containsObject: [[FacebookServiceObjectManager facebookServiceWritePermissions] firstObject]])
         {
             [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
                                                defaultAudience:FBSessionDefaultAudienceEveryone
@@ -200,6 +228,34 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 							<key>End</key>
 							<string>}</string>
+						</dict>
+
+						<key>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)openSessionIfTokenLoaded
+{
+	if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded)
+	{
+        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        {
+            [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
+                                               allowLoginUI:YES
+                                          completionHandler:nil];
+        }
+        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]])
+        {
+            [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
+                                               defaultAudience:FBSessionDefaultAudienceEveryone
+                                                  allowLoginUI:YES
+                                             completionHandler:nil];
+        }
+    }
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
@@ -305,10 +361,13 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<string>Classes/FacebookServiceObjectManager.m</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:sharedManager</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</string>
 						<string>Classes/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</string>
+						<string>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</string>
 					</array>
 				</dict>
 			</dict>
