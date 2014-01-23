@@ -190,13 +190,13 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
         
         if(![[FBSession activeSession].permissions containsObject:[[FacebookServiceObjectManager facebookServiceWritePermissions] firstObject]])
         {
-            [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
+            [FBSession openActiveSessionWithReadPermissions:[FacebookServiceObjectManager facebookServiceReadPermissions]
                                                allowLoginUI:YES
                                           completionHandler:nil];
         }
         else if([[FBSession activeSession].permissions containsObject: [[FacebookServiceObjectManager facebookServiceWritePermissions] firstObject]])
         {
-            [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
+            [FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions]
                                                defaultAudience:FBSessionDefaultAudienceEveryone
                                                   allowLoginUI:YES
                                              completionHandler:nil];
@@ -230,34 +230,6 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (void)openSessionIfTokenLoaded
-{
-	if([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded)
-	{
-        if(![[FBSession activeSession].permissions containsObject:[[CQFacebookAuthInfo FBWritePermissions] firstObject]])
-        {
-            [FBSession openActiveSessionWithReadPermissions:[CQFacebookAuthInfo FBReadPermissions]
-                                               allowLoginUI:YES
-                                          completionHandler:nil];
-        }
-        else if([[FBSession activeSession].permissions containsObject: [[CQFacebookAuthInfo FBWritePermissions] firstObject]])
-        {
-            [FBSession openActiveSessionWithPublishPermissions:[CQFacebookAuthInfo FBWritePermissions]
-                                               defaultAudience:FBSessionDefaultAudienceEveryone
-                                                  allowLoginUI:YES
-                                             completionHandler:nil];
-        }
-    }
-							</string>
-							<key>End</key>
-							<string>}</string>
-							<key>Indent</key>
-							<integer>1</integer>
-						</dict>
-
 						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
@@ -288,7 +260,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 	    {
 	        case ServiceObjectManagerPermissionSetRead:
 	        {
-	            [FBSession openActiveSessionWithReadPermissions:nil
+	            [FBSession openActiveSessionWithReadPermissions:[FacebookServiceObjectManager facebookServiceReadPermissions]
 	                                                  allowLoginUI:YES
 	                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
 	                                             {
@@ -300,14 +272,14 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 	        {
 	        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
 	        	{
-	        		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
+	        		[[FBSession activeSession] requestNewPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
 		       		{
 		                localCallback(session, session.state, permissions, error);
 		            }];
 	        	}
 	        	else
 	        	{
-	        		[FBSession openActiveSessionWithPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error)
+	        		[FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error)
 	                {
 	                    localCallback(session, [FBSession activeSession].state, permissions, error);
 	                }];
