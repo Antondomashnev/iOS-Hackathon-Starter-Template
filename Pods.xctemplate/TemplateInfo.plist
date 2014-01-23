@@ -29,6 +29,8 @@
 		<string>pod &quot;RegExCategories&quot;, &quot;~>1.0&quot;</string>
 		<key>../Podfile:TBMacros</key>
 		<string>pod &quot;TBMacros&quot;, :git => &quot;https://github.com/Antondomashnev/TBMacros&quot;, :commit => &quot;2e2efddb5588c0187d14a56b2ae40d0ea908b49c&quot;</string>
+		<key>../Podfile:libextobjc</key>
+		<string>pod &quot;libextobjc&quot;, &quot;~>0.3&quot;</string>
 
 
 		<key>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</key>
@@ -39,6 +41,8 @@
 		<string>#import &lt;BlocksKit/BlocksKit.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:TBMacros</key>
 		<string>#import &lt;TBMacros/Macros.h&gt;</string>
+		<key>___PACKAGENAME___-Prefix.pch:objC:EXTScope</key>
+		<string>#import "EXTScope.h"</string>
 	</dict>
 	<key>Description</key>
 	<string></string>
@@ -55,10 +59,12 @@
 		<string>../Podfile:BlocksKit</string>
 		<string>../Podfile:RegExCategories</string>
 		<string>../Podfile:TBMacros</string>
+		<string>../Podfile:libextobjc</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:FrameAccessor</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:ObjectiveSugar</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:BlocksKit</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:TBMacros</string>
+		<string>___PACKAGENAME___-Prefix.pch:objC:EXTScope</string>
 	</array>
 	<key>Options</key>
 	<array>
