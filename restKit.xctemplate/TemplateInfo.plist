@@ -270,7 +270,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:___PACKAGENAMEASIDENTIFIER___DataModel];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"___PACKAGENAMEASIDENTIFIER___DataModel"];
     NSError *error = nil;
     
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
