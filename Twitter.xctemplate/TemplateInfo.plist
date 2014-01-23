@@ -299,7 +299,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                 {
                     DDLogInfo(@"Twitter login success");
                     NSMutableDictionary *results = [@{} mutableCopy];
-                    NSString *accessToken = [[[accountInformationString componentsSeparatedByString:@"&amp;"] first] substringFromIndex:12];
+                    NSString *accessToken = [accessToken firstMatch:RX(@"oauth_token=(\\w+?)&amp;")];
                     if(accessToken)
                     {
                         results[kServiceAccessTokenKey] = accessToken;
