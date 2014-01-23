@@ -207,59 +207,63 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<key>Beginning</key>
 							<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback
 {
-	void(^localCallback)(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error){
-        if(FB_ISSESSIONOPENWITHSTATE(state) &amp;&amp;
-           error == nil)
-           	{
-           		DDLogInfo(@"Facebook login succes");
-           		NSMutableDictionary *result = [@{} mutableCopy];
-           		if(session.accessTokenData.accessToken)
-           		{
-           			result[kServiceAccessTokenKey] = session.accessTokenData.accessToken;
-           		}
+	@weakify(self);
+    [self updateiOSFacebookCredentialsWithCallback:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
+        @strongify(self);
+		void(^localCallback)(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error){
+	        if(FB_ISSESSIONOPENWITHSTATE(state) &amp;&amp;
+	           error == nil)
+	           	{
+	           		DDLogInfo(@"Facebook login succes");
+	           		NSMutableDictionary *result = [@{} mutableCopy];
+	           		if(session.accessTokenData.accessToken)
+	           		{
+	           			result[kServiceAccessTokenKey] = session.accessTokenData.accessToken;
+	           		}
 
-           		BLOCK_SAFE_RUN(callback, result, error);
-        }
-        else
-        {
-            DDLogWarn(@"Facebook login failed: %@", [error description]);
-            BLOCK_SAFE_RUN(callback, nil, error);
-        }
-    };
-    
-    switch (permissions) 
-    {
-        case ServiceObjectManagerPermissionSetRead:
-        {
-            [FBSession openActiveSessionWithReadPermissions:nil
-                                                  allowLoginUI:YES
-                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
-                                             {
-                                                 localCallback(session, status, permissions, error);
-                                             }];
-            break;
-        }
-        case ServiceObjectManagerPermissionSetWrite:
-        {
-        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
-        	{
-        		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
-	       		{
-	                localCallback(session, session.state, permissions, error);
-	            }];
-        	}
-        	else
-        	{
-        		[FBSession openActiveSessionWithPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error)
-                {
-                    localCallback(session, [FBSession activeSession].state, permissions, error);
-                }];
-        	}
-            break;
-        }
-        default:
-            break;
-    }
+	           		BLOCK_SAFE_RUN(callback, result, error);
+	        }
+	        else
+	        {
+	            DDLogWarn(@"Facebook login failed: %@", [error description]);
+	            BLOCK_SAFE_RUN(callback, nil, error);
+	        }
+	    };
+
+	    switch (permissions) 
+	    {
+	        case ServiceObjectManagerPermissionSetRead:
+	        {
+	            [FBSession openActiveSessionWithReadPermissions:nil
+	                                                  allowLoginUI:YES
+	                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
+	                                             {
+	                                                 localCallback(session, status, permissions, error);
+	                                             }];
+	            break;
+	        }
+	        case ServiceObjectManagerPermissionSetWrite:
+	        {
+	        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
+	        	{
+	        		[[FBSession activeSession] requestNewPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
+		       		{
+		                localCallback(session, session.state, permissions, error);
+		            }];
+	        	}
+	        	else
+	        	{
+	        		[FBSession openActiveSessionWithPublishPermissions:nil defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error)
+	                {
+	                    localCallback(session, [FBSession activeSession].state, permissions, error);
+	                }];
+	        	}
+	            break;
+	        }
+	        default:
+	            break;
+	    }
+	};
 							</string>
 							<key>End</key>
 							<string>}</string>
