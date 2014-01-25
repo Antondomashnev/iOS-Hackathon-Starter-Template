@@ -36,6 +36,23 @@
 		<string>___VARIABLE_classPrefix:identifier___ViewController.m:implementation:viewDidLoad</string>
 		<string>___VARIABLE_classPrefix:identifier___ViewController.m:implementation:didReceiveMemoryWarning</string>
 	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>The prefix of the project categories</string>
+			<key>Identifier</key>
+			<string>categoryPrefix</string>
+			<key>Name</key>
+			<string>Category Prefix</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>text</string>
+		</dict>
+	</array>
 	<key>SortOrder</key>
 	<integer>1</integer>
 </dict>

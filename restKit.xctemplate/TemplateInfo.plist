@@ -14,6 +14,17 @@
 		<key>../Podfile:RestKit</key>
 		<string>pod &quot;RestKit&quot;, &quot;~> 0.20.3&quot;</string>
 
+		<key>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+		<dict>
+			<key>Path</key>
+			<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+				<key>Group</key>
+				<array>
+					<string>Networking</string>
+					<string>___PROJECTNAMEASIDENTIFIER___</string>
+				</array>
+		</dict>
+
 		<key>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</key>
 		<string>#import &lt;SystemConfiguration/SystemConfiguration.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
@@ -195,6 +206,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 	<key>Nodes</key>
 	<array>
 		<string>../Podfile:RestKit</string>
+		<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>

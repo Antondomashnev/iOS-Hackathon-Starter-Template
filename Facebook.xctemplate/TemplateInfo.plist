@@ -40,7 +40,18 @@
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
 
-						<key>Classes/FacebookServiceObjectManager.h</key>
+						<key>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</key>
+						<dict>
+							<key>Path</key>
+							<string>FacebookServiceDownloadableObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>Facebook</string>
+								</array>
+						</dict>
+
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.h</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#import "ServiceObjectManager.h"
@@ -56,7 +67,7 @@
 							</array>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#import "FacebookServiceObjectManager.h"
@@ -79,7 +90,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</array>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (id)initWithHTTPClient:(AFHTTPClient *)client
@@ -97,7 +108,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 				    		</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:sharedManager</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
 							<string>static FacebookServiceObjectManager *sharedInstance;
@@ -114,7 +125,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - Permissions
@@ -141,7 +152,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<integer>1</integer>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - Helpers
@@ -164,7 +175,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - RKObjectManager
@@ -181,7 +192,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)openSessionIfTokenLoaded
@@ -207,7 +218,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:defaultErrorForCode</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:defaultErrorForCode</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (NSError *)defaultErrorForCode:(NSInteger)code underlyingError:(NSError *)underlyingError
@@ -230,7 +241,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback
@@ -295,7 +306,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<string>}</string>
 						</dict>
 
-						<key>Classes/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)updateiOSFacebookCredentialsWithCallback:(void(^)(ACAccountCredentialRenewResult renewResult, NSError *error))callback
@@ -328,17 +339,18 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 					<key>Nodes</key>
 					<array>
 						<string>../Podfile:Facebook-iOS-SDK</string>
-						<string>Classes/FacebookServiceObjectManager.h</string>
-						<string>Classes/FacebookServiceObjectManager.m</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:sharedManager</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:logInWithCallback</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</string>
-						<string>Classes/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</string>
+						<string>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.h</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:sharedManager</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:logInWithCallback</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</string>
 					</array>
 				</dict>
 			</dict>
