@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.objective-c-source</string>
+	</array>
+	<key>ChooserOnly</key>
+	<true/>
+	<key>DefaultCompletionName</key>
+	<string>Category</string>
+	<key>Description</key>
+	<string>An Objective-C category for NSObject subclass for specific ServiceObjectManager, with implementation and header files.</string>
+	<key>Kind</key>
+	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+	<key>MainTemplateFile</key>
+	<string>___FILEBASENAME___.m</string>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+            <string>categoryName</string>
+            <key>Name</key>
+            <string>Category</string>
+            <key>Description</key>
+            <string>The name of the category to create</string>
+            <key>Type</key>
+            <string>text</string>
+            <key>Default</key>
+            <string>___PROJECTNAMEASIDENTIFIER___Service</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>NSObject</string>
+			<key>Description</key>
+			<string>Which class to add a category to</string>
+			<key>Identifier</key>
+			<string>categoryClass</string>
+			<key>Name</key>
+			<string>Category on</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>class</string>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+            <string>productName</string>
+            <key>Name</key>
+            <string>Suggestion</string>
+            <key>Type</key>
+            <string>static</string>
+            <key>Default</key>
+            <string>Name the category based on service name and add a Service suffix. For example FacebookService.</string>
+		</dict>
+	</array>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
+	<key>Summary</key>
+	<string>An Objective-C category with a header for Cocoa Touch</string>
+</dict>
+</plist>
