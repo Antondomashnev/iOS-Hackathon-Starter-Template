@@ -51,6 +51,17 @@
 								</array>
 						</dict>
 
+						<key>Classes/Networking/FacebookFacebookServiceMappableObjectProtocol</key>
+						<dict>
+							<key>Path</key>
+							<string>FacebookServiceMappableObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>Facebook</string>
+								</array>
+						</dict>
+
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.h</key>
 						<dict>
 							<key>Beginning</key>
@@ -340,6 +351,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 					<array>
 						<string>../Podfile:Facebook-iOS-SDK</string>
 						<string>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/Facebook/FacebookServiceMappableObjectProtocol.h<</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.h</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>

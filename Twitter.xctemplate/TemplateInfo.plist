@@ -48,6 +48,17 @@
 								</array>
 						</dict>
 
+						<key>Classes/Networking/Twitter/TwitterServiceMappableObjectProtocol</key>
+						<dict>
+							<key>Path</key>
+							<string>TwitterServiceMappableObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>Twitter</string>
+								</array>
+						</dict>
+
                         <key>Classes/Networking/Twitter/OAuth+Additions.h</key>
                         <dict>
                             <key>Path</key>
@@ -398,6 +409,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 					<key>Nodes</key>
 					<array>
 						<string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/Twitter/TwitterServiceMappableObjectProtocol</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.h</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.m</string>
 						<string>Classes/Networking/Twitter/OAuthCore.h</string>

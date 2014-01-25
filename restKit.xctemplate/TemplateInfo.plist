@@ -14,10 +14,21 @@
 		<key>../Podfile:RestKit</key>
 		<string>pod &quot;RestKit&quot;, &quot;~> 0.20.3&quot;</string>
 
-		<key>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+		<key>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
 		<dict>
 			<key>Path</key>
 			<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+				<key>Group</key>
+				<array>
+					<string>Networking</string>
+					<string>___PROJECTNAMEASIDENTIFIER___</string>
+				</array>
+		</dict>
+
+		<key>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceMappableObjectProtocol.h</key>
+		<dict>
+			<key>Path</key>
+			<string>___PROJECTNAMEASIDENTIFIER___ServiceMappableObjectProtocol.h</string>
 				<key>Group</key>
 				<array>
 					<string>Networking</string>
@@ -36,7 +47,7 @@
 		<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</key>
 		<string>RKLogConfigureByName("RestKit/Network", RKLogLevelWarning);</string>
 
-		<key>Classes/ServiceObjectManager.h</key>
+		<key>Classes/Networking/ServiceObjectManager.h</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#import &lt;Foundation/Foundation.h&gt;
@@ -74,7 +85,7 @@ extern NSString * const kServiceTokenSecretKey;
 			<string>Networking</string>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m</key>
+		<key>Classes/Networking/ServiceObjectManager.m</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
@@ -111,7 +122,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<integer>1</integer>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m:method:initWithServiceName</key>
+		<key>Classes/Networking/ServiceObjectManager.m:method:initWithServiceName</key>
 		<dict>
 			<key>Beginning</key>
 			<string>- (id)initWithServiceName:(NSString *)serviceName
@@ -128,7 +139,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<integer>1</integer>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m:method:sharedManager</key>
+		<key>Classes/Networking/ServiceObjectManager.m:method:sharedManager</key>
 		<dict>
 			<key>Beginning</key>
 			<string>+ (instancetype)sharedManager
@@ -141,7 +152,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<integer>1</integer>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m:method:errorForCode</key>
+		<key>Classes/Networking/ServiceObjectManager.m:method:errorForCode</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#pragma mark - Interface
@@ -186,7 +197,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<integer>1</integer>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m:method:logInWithPermissions</key>
+		<key>Classes/Networking/ServiceObjectManager.m:method:logInWithPermissions</key>
 		<dict>
 			<key>Beginning</key>
 			<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary *, NSError *))callback
@@ -206,18 +217,19 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 	<key>Nodes</key>
 	<array>
 		<string>../Podfile:RestKit</string>
-		<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+		<string>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+		<string>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceMappableObjectProtocol.h<</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
-		<string>Classes/ServiceObjectManager.h</string>
-		<string>Classes/ServiceObjectManager.m</string>
-		<string>Classes/ServiceObjectManager.m:method:initWithHTTPClient</string>
-		<string>Classes/ServiceObjectManager.m:method:initWithServiceName</string>
-		<string>Classes/ServiceObjectManager.m:method:sharedManager</string>
-		<string>Classes/ServiceObjectManager.m:method:errorForCode</string>
-		<string>Classes/ServiceObjectManager.m:method:logInWithPermissions</string>
+		<string>Classes/Networking/ServiceObjectManager.h</string>
+		<string>Classes/Networking/ServiceObjectManager.m</string>
+		<string>Classes/Networking/ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/Networking/ServiceObjectManager.m:method:initWithServiceName</string>
+		<string>Classes/Networking/ServiceObjectManager.m:method:sharedManager</string>
+		<string>Classes/Networking/ServiceObjectManager.m:method:errorForCode</string>
+		<string>Classes/Networking/ServiceObjectManager.m:method:logInWithPermissions</string>
 	</array>
 	<key>Options</key>
 	<array>
@@ -315,8 +327,6 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 						<string>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeLogging:RKLogConfiguration</string>
-						<string>Classes/ServiceObjectManager.h</string>
-						<string>Classes/ServiceObjectManager.m</string>
 					</array>
 					<key>Targets</key>
 					<array>
