@@ -36,6 +36,14 @@ static RKObjectMapping *objectMappingComplete = nil;
     return objectMappingComplete;
 }
 
-
++ (NSArray *)<# protocol prefix #>_responseDescriptors
+{
+    NSDictionary *pathPatternsKeyPathDictionary = @{@"<# path pattern #>" : @"<# key path #>"};
+    NSMutableArray *responseDescriptorsArray = [NSMutableArray arrayWithCapacity:pathPatternsKeyPathDictionary.count];
+    [pathPatternsKeyPathDictionary each:^(NSString *pathPattern, NSString *keyPath) {
+        [responseDescriptorsArray addObject: [RKResponseDescriptor responseDescriptorWithMapping:[self <# protocol prefix #>_completeObjectMapping] method:RKRequestMethodAny pathPattern:pathPattern keyPath:keyPath statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    }];
+    return responseDescriptorsArray;
+}
 
 @end
