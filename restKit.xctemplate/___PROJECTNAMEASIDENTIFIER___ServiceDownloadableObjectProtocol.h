@@ -16,5 +16,6 @@
 + (NSArray *)___VARIABLE_categoryPrefix:identifier____responseDescriptors;
 + (RKObjectMapping *)___VARIABLE_categoryPrefix:identifier____objectMappingWithoutRelationships;
 + (RKObjectMapping *)___VARIABLE_categoryPrefix:identifier____completeObjectMapping;
++ (void)___VARIABLE_categoryPrefix:identifier____deleteStaticMappings;
 
 @end

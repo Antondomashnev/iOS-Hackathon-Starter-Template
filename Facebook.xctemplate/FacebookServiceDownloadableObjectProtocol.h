@@ -16,5 +16,6 @@
 + (NSArray *)fb_responseDescriptors;
 + (RKObjectMapping *)fb_objectMappingWithoutRelationships;
 + (RKObjectMapping *)fb_completeObjectMapping;
++ (void)fb_deleteStaticMappings;
 
 @end

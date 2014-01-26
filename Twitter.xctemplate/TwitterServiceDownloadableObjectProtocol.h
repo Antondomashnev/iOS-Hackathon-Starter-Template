@@ -16,5 +16,6 @@
 + (NSArray *)tw_responseDescriptors;
 + (RKObjectMapping *)tw_objectMappingWithoutRelationships;
 + (RKObjectMapping *)tw_completeObjectMapping;
++ (void)tw_deleteStaticMappings;
 
 @end
