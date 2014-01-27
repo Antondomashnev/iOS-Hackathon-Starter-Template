@@ -56,25 +56,6 @@ static RKObjectMapping *objectMappingComplete = nil;
  If this object should implement ___VARIABLE_categoryName:identifier___PostableObjectProtocol please use PostableObjectProtocol snippet
  */
 
-static RKObjectMapping *postObjectMapping = nil;
-+ (RKObjectMapping *)___VARIABLE_categoryPrefix:identifier____postObjectMapping
-{
-    if(!postObjectMapping)
-    {
-        postObjectMapping = [RKObjectMapping mappingForClass:[self class]];
-        [postObjectMapping addAttributeMappingsFromDictionary:<# mapping dictionary #>];
-    }
-    return postObjectMapping;
-}
 
-+ (RKRequestDescriptor *)<# protocol prefix #>_requestDescriptor
-{
-    return [RKRequestDescriptor requestDescriptorWithMapping:[[self class] <# protocol prefix #>_postObjectMapping] objectClass:[self class] rootKeyPath:@"<# root key path #>" method:RKRequestMethodPOST];
-}
-
-+ (void)<# protocol prefix #>_deleteStaticRequestMappingObjects
-{
-    postObjectMapping = nil;
-}
 
 @end

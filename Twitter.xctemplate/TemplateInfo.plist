@@ -24,7 +24,7 @@
 			<key>Description</key>
 			<string>Whether the application should use support Twitter authorization and other</string>
 			<key>Identifier</key>
-			<string>coreData</string>
+			<string>twitter</string>
 			<key>Name</key>
 			<string>Enable Twitter</string>
 			<key>SortOrder</key>
@@ -48,10 +48,10 @@
 								</array>
 						</dict>
 
-						<key>Classes/Networking/Twitter/TwitterServiceMappableObjectProtocol</key>
+						<key>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
-							<string>TwitterServiceMappableObjectProtocol.h</string>
+							<string>TwitterServicePostableObjectProtocol.h</string>
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
@@ -209,7 +209,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
-							<string>static TwitterServiceObjectManager *sharedInstance;
+							<string>static TwitterServiceObjectManager *sharedManager;
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
@@ -218,7 +218,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 							</string>
 							<key>End</key>
 							<string>    
-	return sharedInstance;
+	return sharedManager;
 }
 							</string>
 							<key>Indent</key>
@@ -409,7 +409,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 					<key>Nodes</key>
 					<array>
 						<string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
-						<string>Classes/Networking/Twitter/TwitterServiceMappableObjectProtocol</string>
+						<string>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.h</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.m</string>
 						<string>Classes/Networking/Twitter/OAuthCore.h</string>

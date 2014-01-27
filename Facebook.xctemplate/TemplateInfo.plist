@@ -51,7 +51,7 @@
 								</array>
 						</dict>
 
-						<key>Classes/Networking/FacebookFacebookServiceMappableObjectProtocol</key>
+						<key>Classes/Networking/Facebook/FacebookServiceMappableObjectProtocol</key>
 						<dict>
 							<key>Path</key>
 							<string>FacebookServiceMappableObjectProtocol.h</string>
