@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>com.antondomashnev.template.hackathonApplication.Facebook</string>
+	<key>Name</key>
+	<string>Facebook Dependency</string>
+	<key>Ancestors</key>
+	<array>
+	</array>
+	<key>Description</key>
+	<string></string>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Definitions</key>
+					<dict>
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#import "ServiceObjectManager.h"
+
+extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification;
+extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
+
+@interface ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager : ServiceObjectManager
+							</string>
+							<key>End</key>
+							<string>@end</string>
+							<key>Group</key>
+							<array>
+								<string>Networking</string>
+								<string>___PACKAGENAMEASIDENTIFIER___</string>
+							</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h"
+
+static NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"<# ___PACKAGENAMEASIDENTIFIER___  base url#>";
+static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
+static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
+
+@implementation ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager
+							</string>
+							<key>End</key>
+							<string>@end</string>
+							<key>Group</key>
+							<array>
+								<string>Networking</string>
+								<string>___PACKAGENAMEASIDENTIFIER___</string>
+							</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (id)initWithHTTPClient:(AFHTTPClient *)client
+{
+    self = [super initWithHTTPClient:client serviceName:@"___PACKAGENAMEASIDENTIFIER___"];
+    if(self)
+    {
+    	self.requestSerializationMIMEType = RKMIMETypeJSON;
+
+    	[self.HTTPClient setDefaultHeader:@"Accept" value:@"application/json"];
+        [self.HTTPClient setParameterEncoding:AFJSONParameterEncoding];
+        [self.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        [self setUpReachabilityBlock];
+				    		</string>
+				    		<key>End</key>
+				    		<string>
+		[self setUpResponseDescriptors];
+		[self setUpRequestDescriptors];
+		[self clearStaticMappings];
+	}
+    return self;
+}
+				    		</string>
+				    		<key>Indent</key>
+				    		<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</key>
+						<dict>
+							<key>Beginning</key>
+							<string>static ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager *sharedManager;
++ (instancetype)sharedManager{
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        sharedInstance = [[___PACKAGENAMEASIDENTIFIER___ServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:k___PACKAGENAMEASIDENTIFIER___BaseURL]]];
+    });
+							</string>
+							<key>End</key>
+							<string>    
+	return sharedManager;
+}
+							</string>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Helpers
+- (NSArray *)responsedClasses
+{
+	return @[@"<# class one name #>", @"<# class two name#>", ...];
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Helpers
+- (NSArray *)requestedClasses
+{
+	return @[@"<# class one name #>", @"<# class two name#>", ...];
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+	NSArray *responsedClasses = @[@"<# Class *aClass #>", @"<# Class *aClass #>", ...];
+	[responsedClasses each:^(Class *class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol)])
+		{
+			[self addResponseDescriptorsFromArray: [class___VARIABLE_categoryPrefix:identifier____responseDescriptors]];
+		}
+	}];
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)setUpRequestDescriptors
+{
+	NSArray *requestedClasses = @[@"<# class one name #>", @"<# class two name#>", ...];
+    [requestedClasses each:^(NSString *className){
+    	Class class = NSClassFromString(className);
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol)])
+		{
+			[self addRequestDescriptor: [NSClassFromString(className) ___VARIABLE_categoryPrefix:identifier____requestDescriptor]];
+		}
+	}];
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)clearStaticMappings
+{
+
+								
+							</string>
+						</dict>
+					</dict>
+	<key>Nodes</key>
+	<array>
+	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>coredata</string>
+			<key>Units</key>
+			<dict>
+				<key>true</key>
+				<string>
+
+				</string>
+			</dict>
+		</dict>
+	</array>
+	<key>SortOrder</key>
+	<integer>1</integer>
+</dict>
+</plist>

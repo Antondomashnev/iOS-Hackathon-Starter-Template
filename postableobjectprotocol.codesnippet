@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>PostableObjectProtocol</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>
+#pragma mark PostableObjectProtocol
+static RKObjectMapping *postObjectMapping = nil;
+    + (RKObjectMapping *)&lt;# protocol prefix #&gt;_postObjectMapping
+    {
+        if(!postObjectMapping)
+        {
+            postObjectMapping = [RKObjectMapping mappingForClass:[self class]];
+            [postObjectMapping addAttributeMappingsFromDictionary:&lt;# mapping dictionary #&gt;];
+        }
+        return postObjectMapping;
+    }
+    
+    + (RKRequestDescriptor *)&lt;# protocol prefix #&gt;_requestDescriptor
+    {
+        return [RKRequestDescriptor requestDescriptorWithMapping:[[self class] &lt;# protocol prefix #&gt;_postObjectMapping] objectClass:[self class] rootKeyPath:@"&lt;# root key path #&gt;" method:RKRequestMethodPOST];
+    }
+    
+    + (void)&lt;# protocol prefix #&gt;_deleteStaticRequestMappingObjects
+    {
+        postObjectMapping = nil;
+    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9E2C3011-3838-4244-B3DC-975B418D34E0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Used for implement PostableObjectProtocol requared methods</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Objective-C PostableObjectProtocol Protocol</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
