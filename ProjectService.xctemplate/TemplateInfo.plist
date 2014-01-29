@@ -15,27 +15,6 @@
 	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
 	<key>Definitions</key>
 	<dict>
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
-		<dict>
-			<key>Path</key>
-			<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
-				<key>Group</key>
-				<array>
-					<string>Networking</string>
-					<string>___PACKAGENAMEASIDENTIFIER___</string>
-				</array>
-		</dict>
-
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
-		<dict>
-			<key>Path</key>
-			<string>___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
-				<key>Group</key>
-				<array>
-					<string>Networking</string>
-					<string>___PACKAGENAMEASIDENTIFIER___</string>
-				</array>
-		</dict>
 
 		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</key>
 		<dict>
@@ -92,8 +71,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 		[self setUpReachabilityBlock];
     		</string>
     		<key>End</key>
-    		<string>
-		[self setUpResponseDescriptors];
+    		<string>[self setUpResponseDescriptors];
 		[self setUpRequestDescriptors];
 		[self clearStaticMappings];
 	}
@@ -130,7 +108,8 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;", ...];
 			</string>
 			<key>End</key>
-			<string>}</string>
+			<string>}
+			</string>
 			<key>Indent</key>
 			<integer>1</integer>
 		</dict>
@@ -138,21 +117,63 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</key>
 		<dict>
 			<key>Beginning</key>
-			<string>#pragma mark - Helpers
-- (NSArray *)requestedClasses
+			<string>- (NSArray *)requestedClasses
 {
 	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;", ...];
 			</string>
 			<key>End</key>
-			<string>}</string>
+			<string>}
+			</string>
 			<key>Indent</key>
 			<integer>1</integer>
 		</dict>
-
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+	</dict>
+	<key>Nodes</key>
+	<array>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</string>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
+		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</string>
+	</array>
+	<key>Options</key>
+	<array>
 		<dict>
-			<key>Beginning</key>
-			<string>#pragma mark - Mapping
+			<key>Identifier</key>
+			<string>coredata</string>
+			<key>Units</key>
+			<dict>
+				<key>false</key>
+				<dict>
+					<key>Definitions</key>
+					<dict>
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+						<dict>
+							<key>Path</key>
+							<string>___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>___PACKAGENAMEASIDENTIFIER___</string>
+								</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
+						<dict>
+							<key>Path</key>
+							<string>___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>___PACKAGENAMEASIDENTIFIER___</string>
+								</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Mapping
 - (void)setUpResponseDescriptors
 {
 	NSArray *responsedClasses = [self responsedClasses];
@@ -162,17 +183,17 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____responseDescriptors]];
 		}
 	}];
-			</string>
-			<key>End</key>
-			<string>}</string>
-			<key>Indent</key>
-			<integer>1</integer>
-		</dict>
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
-		<dict>
-			<key>Beginning</key>
-			<string>- (void)setUpRequestDescriptors
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)setUpRequestDescriptors
 {
 	NSArray *requestedClasses = [self requestedClasses];
 	[requestedClasses each:^(Class *class){
@@ -181,17 +202,18 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____requestDescriptor]];
 		}
 	}];
-			</string>
-			<key>End</key>
-			<string>}</string>
-			<key>Indent</key>
-			<integer>1</integer>
-		</dict>
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
-		<dict>
-			<key>Beginning</key>
-			<string>- (void)clearStaticMappings
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)clearStaticMappings
 {
 	NSArray *responsedClasses = [self responsedClasses];
 	[responsedClasses each:^(Class *class){
@@ -209,38 +231,23 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 		}
 	}];
 				
-			</string>
-			<key>End</key>
-			<string>}</string>
-			<key>Indent</key>
-			<integer>1</integer>
-		</dict>
-	</dict>
-	<key>Nodes</key>
-	<array>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
-	</array>
-	<key>Options</key>
-	<array>
-		<dict>
-			<key>Identifier</key>
-			<string>coredata</string>
-			<key>Units</key>
-			<dict>
-				<key>true</key>
-				<string>
-
-				</string>
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+					</dict>
+					<key>Nodes</key>
+					<array>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
+					</array>
+				</dict>
 			</dict>
 		</dict>
 	</array>
