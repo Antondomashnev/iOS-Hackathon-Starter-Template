@@ -14,28 +14,6 @@
 		<key>../Podfile:RestKit</key>
 		<string>pod &quot;RestKit&quot;, &quot;~> 0.20.3&quot;</string>
 
-		<key>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
-		<dict>
-			<key>Path</key>
-			<string>___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
-				<key>Group</key>
-				<array>
-					<string>Networking</string>
-					<string>___PROJECTNAMEASIDENTIFIER___</string>
-				</array>
-		</dict>
-
-		<key>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
-		<dict>
-			<key>Path</key>
-			<string>___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
-				<key>Group</key>
-				<array>
-					<string>Networking</string>
-					<string>___PROJECTNAMEASIDENTIFIER___</string>
-				</array>
-		</dict>
-
 		<key>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</key>
 		<string>#import &lt;SystemConfiguration/SystemConfiguration.h&gt;</string>
 		<key>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</key>
@@ -217,8 +195,6 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 	<key>Nodes</key>
 	<array>
 		<string>../Podfile:RestKit</string>
-		<string>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
-		<string>Classes/Networking/___PROJECTNAMEASIDENTIFIER___/___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:SystemConfiguration</string>
 		<string>___PACKAGENAME___-Prefix.pch:objC:MobileCoreServices</string>
 		<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:RestKit</string>
@@ -239,7 +215,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<key>Description</key>
 			<string>Whether the application should use the Core Data framework for storage</string>
 			<key>Identifier</key>
-			<string>restKit</string>
+			<string>coredata</string>
 			<key>Name</key>
 			<string>Use Core Data</string>
 			<key>SortOrder</key>

@@ -15,6 +15,7 @@
 		<string>com.antondomashnev.template.hackathonApplication.RestKit</string>
 		<string>com.antondomashnev.template.hackathonApplication.Facebook</string>
 		<string>com.antondomashnev.template.hackathonApplication.Twitter</string>
+		<string>com.antondomashnev.template.hackathonApplication.ProjectService</string>
 	</array>
 	<key>Concrete</key>
 	<true/>

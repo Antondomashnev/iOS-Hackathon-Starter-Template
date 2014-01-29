@@ -51,10 +51,10 @@
 								</array>
 						</dict>
 
-						<key>Classes/Networking/Facebook/FacebookServiceMappableObjectProtocol</key>
+						<key>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
-							<string>FacebookServiceMappableObjectProtocol.h</string>
+							<string>FacebookServicePostableObjectProtocol.h</string>
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
@@ -122,7 +122,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:sharedManager</key>
 						<dict>
 							<key>Beginning</key>
-							<string>static FacebookServiceObjectManager *sharedInstance;
+							<string>static FacebookServiceObjectManager *sharedManager;
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
@@ -131,7 +131,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</string>
 							<key>End</key>
 							<string>    
-	return sharedInstance;
+	return sharedManager;
 }
 							</string>
 						</dict>
@@ -351,7 +351,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 					<array>
 						<string>../Podfile:Facebook-iOS-SDK</string>
 						<string>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</string>
-						<string>Classes/Networking/Facebook/FacebookServiceMappableObjectProtocol.h<</string>
+						<string>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.h</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
