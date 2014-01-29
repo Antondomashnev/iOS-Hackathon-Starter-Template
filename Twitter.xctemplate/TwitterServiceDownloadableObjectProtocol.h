@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class RKObjectMapping;
+@class RKEntityMapping;
+@class RKManagedObjectStore;
 
-@protocol TwitterServiceDownloadableObjectProtocol <NSObject>
+@protocol TwitterServicePostableManagedObjectProtocol <NSObject>
 
 @required
-+ (NSArray *)tw_responseDescriptors;
-+ (RKObjectMapping *)tw_objectMappingWithoutRelationships;
-+ (RKObjectMapping *)tw_completeObjectMapping;
-+ (void)tw_deleteStaticResponseMappingObjects;
++ (RKRequestDescriptor *)tw_managedObjectRequestDescriptor;
++ (RKEntityMapping *)tw_postManagedObjectMappingInStore:(RKManagedObjectStore *)store;
++ (void)tw_deleteStaticRequestEntityMappingObjects;
 
 @end

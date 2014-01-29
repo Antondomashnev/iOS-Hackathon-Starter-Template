@@ -40,7 +40,7 @@ extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
 			<key>Beginning</key>
 			<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h"
 
-static NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;# ___PACKAGENAMEASIDENTIFIER___  base url#&gt;";
+static NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;#___PACKAGENAMEASIDENTIFIER___ base url#&gt;";
 static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
 static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
 

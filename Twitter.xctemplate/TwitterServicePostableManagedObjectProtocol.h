@@ -10,11 +10,11 @@
 
 @class RKObjectMapping;
 
-@protocol FacebookServicePostableObjectProtocol <NSObject>
+@protocol TwitterServicePostableObjectProtocol <NSObject>
 
 @required
-+ (RKRequestDescriptor *)fb_requestDescriptor;
-+ (RKObjectMapping *)fb_postObjectMapping;
-+ (void)fb_deleteStaticRequestMappingObjects;
++ (RKRequestDescriptor *)tw_requestDescriptor;
++ (RKObjectMapping *)tw_postObjectMapping;
++ (void)tw_deleteStaticRequestMappingObjects;
 
 @end
