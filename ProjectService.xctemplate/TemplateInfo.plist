@@ -144,6 +144,109 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			<string>coredata</string>
 			<key>Units</key>
 			<dict>
+				<key>true</key>
+				<dict>
+					<key>Definitions</key>
+					<dict>
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
+						<dict>
+							<key>Path</key>
+							<string>___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>___PACKAGENAMEASIDENTIFIER___</string>
+								</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</key>
+						<dict>
+							<key>Path</key>
+							<string>___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
+								<key>Group</key>
+								<array>
+									<string>Networking</string>
+									<string>___PACKAGENAMEASIDENTIFIER___</string>
+								</array>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class *class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol)])
+		{
+			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptors]];
+		}
+	}];
+							</string>
+							<key>End</key>
+							<string>}</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)setUpRequestDescriptors
+{
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class *class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
+		{
+			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor
+	}];
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (void)clearStaticMappings
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class *class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol)])
+		{
+			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticResponseEntityMappingObjects];
+		}
+	}];
+
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class *class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
+		{
+			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticRequestEntityMappingObjects];
+		}
+	}];
+				
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+					</dict>
+					<key>Nodes</key>
+					<array>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
+					</array>
+				</dict>
 				<key>false</key>
 				<dict>
 					<key>Definitions</key>
