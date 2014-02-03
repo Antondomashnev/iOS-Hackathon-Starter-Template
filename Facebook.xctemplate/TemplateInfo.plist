@@ -36,7 +36,7 @@
 				<key>true</key>
 				<dict>
 					<key>Definitions</key>
-					<dict> 
+					<dict>
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
 
@@ -126,7 +126,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedInstance = [[FacebookServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:kFacebookBaseURL]]];
+        sharedManager = [[FacebookServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:kFacebookBaseURL]]];
     });
 							</string>
 							<key>End</key>
@@ -150,7 +150,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<integer>1</integer>
 						</dict>
 
-												<key>Classes/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</key>
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</key>
 						<dict>
 							<key>Beginning</key>
 							<string>+ (NSArray *)facebookServiceWritePermissions
