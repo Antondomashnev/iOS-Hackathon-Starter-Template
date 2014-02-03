@@ -31,7 +31,7 @@ extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
 			<key>Group</key>
 			<array>
 				<string>Networking</string>
-				<string>___PACKAGENAMEASIDENTIFIER___</string>
+				<string>ProjectService</string>
 			</array>
 		</dict>
 
@@ -51,7 +51,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<key>Group</key>
 			<array>
 				<string>Networking</string>
-				<string>___PACKAGENAMEASIDENTIFIER___</string>
+				<string>ProjectService</string>
 			</array>
 		</dict>
 
@@ -94,8 +94,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	});
 			</string>
 			<key>End</key>
-			<string>    
-	return sharedManager;
+			<string>return sharedManager;
 }
 			</string>
 		</dict>
@@ -128,6 +127,24 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<key>Indent</key>
 			<integer>1</integer>
 		</dict>
+
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpReachabilityBlock</key>
+		<dict>
+			<key>Beginning</key>
+			<string>- (void)setUpReachabilityBlock
+{
+	@weakify(self);
+    [self.HTTPClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        @strongify(self);
+        [[NSNotificationCenter defaultCenter] postNotificationName:k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification object:self userInfo:@{k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey : @(status)}];
+    }];
+			</string>
+			<key>End</key>
+			<string>}
+			</string>
+			<key>Indent</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>Nodes</key>
 	<array>
@@ -137,6 +154,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpReachabilityBlock</string>
 	</array>
 	<key>Options</key>
 	<array>
@@ -156,7 +174,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
-									<string>___PACKAGENAMEASIDENTIFIER___</string>
+									<string>ProjectService</string>
 								</array>
 						</dict>
 
@@ -167,7 +185,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
-									<string>___PACKAGENAMEASIDENTIFIER___</string>
+									<string>ProjectService</string>
 								</array>
 						</dict>
 
@@ -192,7 +210,8 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 						</dict>
 
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
-						<string>self.managedObjectStore = [RKManagedObjectStore defaultStore];
+						<string>
+self.managedObjectStore = [RKManagedObjectStore defaultStore];
 						</string>
 
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
@@ -263,7 +282,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
-									<string>___PACKAGENAMEASIDENTIFIER___</string>
+									<string>ProjectService</string>
 								</array>
 						</dict>
 
@@ -274,7 +293,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								<key>Group</key>
 								<array>
 									<string>Networking</string>
-									<string>___PACKAGENAMEASIDENTIFIER___</string>
+									<string>ProjectService</string>
 								</array>
 						</dict>
 
@@ -293,7 +312,8 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	}];
 							</string>
 							<key>End</key>
-							<string>}</string>
+							<string>}
+							</string>
 							<key>Indent</key>
 							<integer>1</integer>
 						</dict>
