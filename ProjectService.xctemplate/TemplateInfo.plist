@@ -190,6 +190,10 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 							<integer>1</integer>
 						</dict>
 
+						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
+						<string>self.managedObjectStore = [RKManagedObjectStore defaultStore];
+						</string>
+
 						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
 						<dict>
 							<key>Beginning</key>
@@ -242,6 +246,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 					<array>
 						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
 						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
 						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
 						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
 						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>

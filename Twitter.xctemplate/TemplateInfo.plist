@@ -213,7 +213,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedInstance = [[TwitterServiceObjectManager alloc] initWithServiceName:@"Twitter"];
+        sharedManager = [[TwitterServiceObjectManager alloc] initWithServiceName:@"Twitter"];
     });
 							</string>
 							<key>End</key>
