@@ -40,9 +40,9 @@ extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
 			<key>Beginning</key>
 			<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h"
 
-static NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;#___PACKAGENAMEASIDENTIFIER___ base url#&gt;";
-static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
-static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
+NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;#___PACKAGENAMEASIDENTIFIER___ base url#&gt;";
+NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
+NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
 
 @implementation ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager
 			</string>
@@ -71,7 +71,8 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 		[self setUpReachabilityBlock];
     		</string>
     		<key>End</key>
-    		<string>[self setUpResponseDescriptors];
+    		<string>
+    	[self setUpResponseDescriptors];
 		[self setUpRequestDescriptors];
 		[self clearStaticMappings];
 	}
@@ -89,7 +90,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 + (instancetype)sharedManager{
 	static dispatch_once_t onceToken;
 	dispatch_once(&amp;onceToken, ^{
-		sharedInstance = [[___PACKAGENAMEASIDENTIFIER___ServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:k___PACKAGENAMEASIDENTIFIER___BaseURL]]];
+		sharedManager = [[___PACKAGENAMEASIDENTIFIER___ServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:k___PACKAGENAMEASIDENTIFIER___BaseURL]]];
 	});
 			</string>
 			<key>End</key>
@@ -105,7 +106,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			<string>#pragma mark - Helpers
 - (NSArray *)responsedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;", ...];
+	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
 			</string>
 			<key>End</key>
 			<string>}
@@ -119,7 +120,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			<key>Beginning</key>
 			<string>- (NSArray *)requestedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;", ...];
+	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
 			</string>
 			<key>End</key>
 			<string>}
@@ -203,7 +204,7 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 	[requestedClasses each:^(Class *class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
 		{
-			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor
+			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor];
 	}];
 							</string>
 							<key>End</key>
@@ -233,7 +234,6 @@ static NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticRequestEntityMappingObjects];
 		}
 	}];
-				
 							</string>
 							<key>End</key>
 							<string>}
