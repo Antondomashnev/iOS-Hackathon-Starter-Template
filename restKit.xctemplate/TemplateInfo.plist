@@ -83,7 +83,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<string>Networking</string>
 		</dict>
 
-		<key>Classes/ServiceObjectManager.m:method:initWithHTTPClient</key>
+		<key>Classes/Networking/ServiceObjectManager.m:method:initWithHTTPClient</key>
 		<dict>
 			<key>Beginning</key>
 			<string>- (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName

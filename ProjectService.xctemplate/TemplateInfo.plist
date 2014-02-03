@@ -167,6 +167,12 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 				<dict>
 					<key>Definitions</key>
 					<dict>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
+						<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h"</string>
+
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</key>
+						<string>#import "___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h"</string>
+
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
@@ -196,7 +202,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 - (void)setUpResponseDescriptors
 {
 	NSArray *responsedClasses = [self responsedClasses];
-	[responsedClasses each:^(Class *class){
+	[responsedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol)])
 		{
 			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptors]];
@@ -220,10 +226,11 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 							<string>- (void)setUpRequestDescriptors
 {
 	NSArray *requestedClasses = [self requestedClasses];
-	[requestedClasses each:^(Class *class){
+	[requestedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
 		{
-			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor];
+			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor]];
+		}
 	}];
 							</string>
 							<key>End</key>
@@ -239,7 +246,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 							<string>- (void)clearStaticMappings
 {
 	NSArray *responsedClasses = [self responsedClasses];
-	[responsedClasses each:^(Class *class){
+	[responsedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol)])
 		{
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticResponseEntityMappingObjects];
@@ -247,7 +254,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 	}];
 
 	NSArray *requestedClasses = [self requestedClasses];
-	[requestedClasses each:^(Class *class){
+	[requestedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
 		{
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticRequestEntityMappingObjects];
@@ -265,6 +272,8 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 					<array>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
@@ -275,6 +284,12 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 				<dict>
 					<key>Definitions</key>
 					<dict>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+						<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h"</string>
+
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
+						<string>#import "___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h"</string>
+
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
@@ -304,7 +319,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 - (void)setUpResponseDescriptors
 {
 	NSArray *responsedClasses = [self responsedClasses];
-	[responsedClasses each:^(Class *class){
+	[responsedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol)])
 		{
 			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____responseDescriptors]];
@@ -324,7 +339,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 							<string>- (void)setUpRequestDescriptors
 {
 	NSArray *requestedClasses = [self requestedClasses];
-	[requestedClasses each:^(Class *class){
+	[requestedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol)])
 		{
 			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____requestDescriptor]];
@@ -344,7 +359,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 							<string>- (void)clearStaticMappings
 {
 	NSArray *responsedClasses = [self responsedClasses];
-	[responsedClasses each:^(Class *class){
+	[responsedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol)])
 		{
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticResponseMappingObjects];
@@ -352,7 +367,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 	}];
 
 	NSArray *requestedClasses = [self requestedClasses];
-	[requestedClasses each:^(Class *class){
+	[requestedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol)])
 		{
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticRequestMappingObjects];
@@ -371,6 +386,8 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 					<array>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
