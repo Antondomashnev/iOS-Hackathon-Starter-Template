@@ -16,7 +16,7 @@
 	<key>Definitions</key>
 	<dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#import "ServiceObjectManager.h"
@@ -35,7 +35,7 @@ extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
 			</array>
 		</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h"
@@ -55,7 +55,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			</array>
 		</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</key>
 		<dict>
 			<key>Beginning</key>
 			<string>- (id)initWithHTTPClient:(AFHTTPClient *)client
@@ -83,7 +83,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
     		<integer>1</integer>
 		</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</key>
 		<dict>
 			<key>Beginning</key>
 			<string>static ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager *sharedManager;
@@ -100,7 +100,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			</string>
 		</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</key>
 		<dict>
 			<key>Beginning</key>
 			<string>#pragma mark - Helpers
@@ -115,7 +115,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<integer>1</integer>
 		</dict>
 
-		<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</key>
 		<dict>
 			<key>Beginning</key>
 			<string>- (NSArray *)requestedClasses
@@ -131,12 +131,12 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	</dict>
 	<key>Nodes</key>
 	<array>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
-		<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:requestedClasses</string>
 	</array>
 	<key>Options</key>
 	<array>
@@ -149,7 +149,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 				<dict>
 					<key>Definitions</key>
 					<dict>
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
@@ -160,7 +160,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								</array>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
@@ -171,7 +171,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								</array>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - Mapping
@@ -191,11 +191,11 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 							<integer>1</integer>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
 						<string>self.managedObjectStore = [RKManagedObjectStore defaultStore];
 						</string>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)setUpRequestDescriptors
@@ -214,7 +214,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 							<integer>1</integer>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)clearStaticMappings
@@ -244,19 +244,19 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 					</dict>
 					<key>Nodes</key>
 					<array>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
 					</array>
 				</dict>
 				<key>false</key>
 				<dict>
 					<key>Definitions</key>
 					<dict>
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
@@ -267,7 +267,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								</array>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
@@ -278,7 +278,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 								</array>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</key>
 						<dict>
 							<key>Beginning</key>
 							<string>#pragma mark - Mapping
@@ -298,7 +298,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 							<integer>1</integer>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)setUpRequestDescriptors
@@ -318,7 +318,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 							<integer>1</integer>
 						</dict>
 
-						<key>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
+						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</key>
 						<dict>
 							<key>Beginning</key>
 							<string>- (void)clearStaticMappings
@@ -349,11 +349,11 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 					</dict>
 					<key>Nodes</key>
 					<array>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
-						<string>Classes/Networking/___PACKAGENAMEASIDENTIFIER___/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</string>
+						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:clearStaticMappings</string>
 					</array>
 				</dict>
 			</dict>
