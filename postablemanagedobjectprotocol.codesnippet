@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>PostableManagedObjectProtocol</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark PostableManagedObjectProtocol
+static RKObjectMapping *postEntityMapping = nil;
++ (RKEntityMapping *)&lt;# protocol prefix #&gt;_postManagedObjectMapping
+{
+    if(!postEntityMapping)
+    {
+        postEntityMapping = [RKObjectMapping mappingForEntityForName:[[self entityDescription] name] inManagedObjectStore: store];
+        [postEntityMapping addAttributeMappingsFromDictionary:&lt;# mapping dictionary #&gt;];
+    }
+    return postEntityMapping;
+}
+
++ (RKRequestDescriptor *)&lt;# protocol prefix #&gt;_managedObjectRequestDescriptor
+{
+    return [RKRequestDescriptor requestDescriptorWithMapping:[[self class] &lt;# protocol prefix #&gt;_postObjectMapping] objectClass:[self class] rootKeyPath:@"&lt;# root key path #&gt;" method:RKRequestMethodPOST];
+}
+
++ (void)&lt;# protocol prefix #&gt;_deleteStaticRequestEntityMappingObjects
+{
+    postEntityMapping = nil;
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>479311D9-134C-40D3-984C-E4BD993C5F99</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Used for implement PostableManagedObjectProtocol requared methods</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Objective-C PostableManagedObjectProtocol Protocol</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
