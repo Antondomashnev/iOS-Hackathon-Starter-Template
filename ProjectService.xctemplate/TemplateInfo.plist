@@ -68,8 +68,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 		[self.HTTPClient setDefaultHeader:@"Accept" value:@"application/json"];
 		[self.HTTPClient setParameterEncoding:AFJSONParameterEncoding];
 		[self.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
-		[self setUpReachabilityBlock];
-    		</string>
+		[self setUpReachabilityBlock];</string>
     		<key>End</key>
     		<string>
     	[self setUpResponseDescriptors];
@@ -94,7 +93,8 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	});
 			</string>
 			<key>End</key>
-			<string>return sharedManager;
+			<string>
+	return sharedManager;
 }
 			</string>
 		</dict>
@@ -105,8 +105,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<string>#pragma mark - Helpers
 - (NSArray *)responsedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
-			</string>
+	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];</string>
 			<key>End</key>
 			<string>}
 			</string>
@@ -119,8 +118,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<key>Beginning</key>
 			<string>- (NSArray *)requestedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
-			</string>
+	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];</string>
 			<key>End</key>
 			<string>}
 			</string>
@@ -284,6 +282,9 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 				<dict>
 					<key>Definitions</key>
 					<dict>
+						<key>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
+						<string>#import ""___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h"</string>
+
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
 						<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h"</string>
 
@@ -386,6 +387,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 					<array>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
+						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</string>
 						<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpResponseDescriptors</string>
