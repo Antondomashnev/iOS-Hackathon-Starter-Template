@@ -37,30 +37,69 @@
 				<dict>
 					<key>Definitions</key>
 					<dict>
+						<key>Options</key>
+						<array>
+							<dict>
+								<key>Identifier</key>
+								<string>coredata</string>
+								<key>Units</key>
+								<dict>
+									<key>true</key>
+									<dict>
+										<key>Classes/Networking/Facebook/FacebookServiceDownloadableManagedObjectProtocol.h</key>
+										<dict>
+											<key>Path</key>
+											<string>FacebookServiceDownloadableManagedObjectProtocol.h</string>
+												<key>Group</key>
+												<array>
+													<string>Networking</string>
+													<string>Facebook</string>
+												</array>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</key>
+										<dict>
+											<key>Path</key>
+											<string>FacebookServicePostableManagedObjectProtocol.h</string>
+												<key>Group</key>
+												<array>
+													<string>Networking</string>
+													<string>Facebook</string>
+												</array>
+										</dict>
+									</dict>
+									<key>false</key>
+									<dict>
+										<key>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</key>
+										<dict>
+											<key>Path</key>
+											<string>FacebookServiceDownloadableObjectProtocol.h</string>
+												<key>Group</key>
+												<array>
+													<string>Networking</string>
+													<string>Facebook</string>
+												</array>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</key>
+										<dict>
+											<key>Path</key>
+											<string>FacebookServicePostableObjectProtocol.h</string>
+												<key>Group</key>
+												<array>
+													<string>Networking</string>
+													<string>Facebook</string>
+												</array>
+										</dict>
+									</dict>
+								</dict>
+							</dict>
+						</array>
+
+
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
 
-						<key>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</key>
-						<dict>
-							<key>Path</key>
-							<string>FacebookServiceDownloadableObjectProtocol.h</string>
-								<key>Group</key>
-								<array>
-									<string>Networking</string>
-									<string>Facebook</string>
-								</array>
-						</dict>
-
-						<key>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</key>
-						<dict>
-							<key>Path</key>
-							<string>FacebookServicePostableObjectProtocol.h</string>
-								<key>Group</key>
-								<array>
-									<string>Networking</string>
-									<string>Facebook</string>
-								</array>
-						</dict>
 
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.h</key>
 						<dict>
@@ -145,7 +184,8 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 	return @[@"&lt;# Read permission #&gt;", @"&lt;# Another read permission #&gt;"];							
 							</string>
 							<key>End</key>
-							<string>}</string>
+							<string>}
+							</string>
 							<key>Indent</key>
 							<integer>1</integer>
 						</dict>
@@ -158,7 +198,8 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 	return @[@"&lt;# Write permission #&gt;", @"&lt;# Another write permission #&gt;"];							
 							</string>
 							<key>End</key>
-							<string>}</string>
+							<string>}
+							</string>
 							<key>Indent</key>
 							<integer>1</integer>
 						</dict>

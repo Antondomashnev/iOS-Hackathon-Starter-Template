@@ -9,8 +9,7 @@
 ___IMPORTHEADER_categoryClass___
 #import "___VARIABLE_categoryName:identifier___DownloadableObjectProtocol.h"
 #import "___VARIABLE_categoryName:identifier___PostableObjectProtocol.h"
-#import "___VARIABLE_categoryName:identifier___MappableObjectProtocol.h"
 
-@interface ___VARIABLE_categoryClass:identifier___ (___VARIABLE_categoryName:identifier___) <___VARIABLE_categoryName:identifier___DownloadableObjectProtocol, ___VARIABLE_categoryName:identifier___PostableObjectProtocol, ___VARIABLE_categoryName:identifier___MappableObjectProtocol>
+@interface ___VARIABLE_categoryClass:identifier___ (___VARIABLE_categoryName:identifier___) <___VARIABLE_categoryName:identifier___DownloadableObjectProtocol, ___VARIABLE_categoryName:identifier___PostableObjectProtocol>
 
 @end

@@ -35,6 +35,83 @@
 			<dict>
 				<key>true</key>
 				<dict>
+                    <key>Options</key>
+                    <array>
+                        <dict>
+                            <key>Identifier</key>
+                            <string>coredata</string>
+                            <key>Units</key>
+                            <dict>
+                                <key>true</key>
+                                <dict>
+                                    <key>Definitions</key>
+                                    <dict>
+                                        <key>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>TwitterServiceDownloadableManagedObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Twitter</string>
+                                                </array>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>TwitterServicePostableManagedObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Twitter</string>
+                                                </array>
+                                        </dict>
+                                    </dict>
+
+                                    <key>Nodes</key>
+                                    <array>
+                                        <string>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</string>
+                                    </array>
+                                </dict>
+                                <key>false</key>
+                                <dict>
+                                    <key>Definitions</key>
+                                    <dict>
+                                        <key>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>TwitterServiceDownloadableObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Twitter</string>
+                                                </array>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>TwitterServicePostableObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Twitter</string>
+                                                </array>
+                                        </dict>
+                                    </dict>
+
+                                    <key>Nodes</key>
+                                    <array>
+                                        <string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </dict>
+                    </array>
+
 					<key>Definitions</key>
 					<dict> 
 						<key>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</key>
