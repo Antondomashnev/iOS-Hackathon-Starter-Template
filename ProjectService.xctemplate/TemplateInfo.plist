@@ -37,15 +37,6 @@ extern NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey;
 
 		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</key>
 		<dict>
-			<key>Beginning</key>
-			<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h"
-
-NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;#___PACKAGENAMEASIDENTIFIER___ base url#&gt;";
-NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
-NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
-
-@implementation ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager
-			</string>
 			<key>End</key>
 			<string>@end</string>
 			<key>Group</key>
@@ -54,6 +45,16 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 				<string>ProjectService</string>
 			</array>
 		</dict>
+
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:constants</key>
+		<string>NSString * const k___PACKAGENAMEASIDENTIFIER___BaseURL = @"&lt;#___PACKAGENAMEASIDENTIFIER___ base url#&gt;";
+NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotification";
+NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
+		</string>
+
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:implemetation</key>
+		<string>@implementation ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager
+		</string>
 
 		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</key>
 		<dict>
@@ -64,7 +65,6 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	if(self)
 	{
 		self.requestSerializationMIMEType = RKMIMETypeJSON;
-
 		[self.HTTPClient setDefaultHeader:@"Accept" value:@"application/json"];
 		[self.HTTPClient setParameterEncoding:AFJSONParameterEncoding];
 		[self.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
@@ -150,6 +150,9 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	<array>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.h</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:constants</string>
+		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:implementation</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:sharedManager</string>
 		<string>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:responsedClasses</string>
@@ -167,12 +170,6 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 				<dict>
 					<key>Definitions</key>
 					<dict>
-						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
-						<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h"</string>
-
-						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h</key>
-						<string>#import "___PACKAGENAMEASIDENTIFIER___ServicePostableManagedObjectProtocol.h"</string>
-
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
@@ -284,12 +281,6 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 				<dict>
 					<key>Definitions</key>
 					<dict>
-						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
-						<string>#import "___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h"</string>
-
-						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:import:___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h</key>
-						<string>#import "___PACKAGENAMEASIDENTIFIER___ServicePostableObjectProtocol.h"</string>
-
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceDownloadableObjectProtocol.h</key>
 						<dict>
 							<key>Path</key>
