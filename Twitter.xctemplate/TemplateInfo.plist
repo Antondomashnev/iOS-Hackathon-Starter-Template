@@ -73,6 +73,8 @@
                                     <array>
                                         <string>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</string>
                                         <string>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableManagedObjectProtocol.h</string>
                                     </array>
                                 </dict>
                                 <key>false</key>
@@ -106,6 +108,8 @@
                                     <array>
                                         <string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
                                         <string>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableObjectProtocol.h</string>
                                     </array>
                                 </dict>
                             </dict>
@@ -224,17 +228,7 @@ extern NSString *const kTwitterSecret;
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m</key>
 						<dict>
 							<key>Beginning</key>
-							<string>#import "TwitterServiceObjectManager.h"
-#import "TWAPIManager.h"
-#import "UIActionSheet+BlocksKit.h"
-#import "RegExCategories.h"
-#import &lt;Accounts/Accounts.h&gt;
-
-NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
-NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
-NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
-
-@implementation TwitterServiceObjectManager
+							<string>#import &lt;Accounts/Accounts.h&gt;
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -244,6 +238,16 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                             	<string>Twitter</string>
                             </array>
 						</dict>
+
+                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:constants</key>
+                        <string>NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
+NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
+NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
+                        </string>
+
+                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:implementation</key>
+                        <string>@implementation TwitterServiceObjectManager
+                        </string>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</key>
 						<dict>
@@ -473,6 +477,12 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 						<string>Classes/Networking/Twitter/TWSignedRequest.m</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.h</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceObjectManager.h</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TWAPIManager.h</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:UIActionSheet+BlocksKit.h</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:RegExCategories.h</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:constants</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:implementation</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</string>
