@@ -35,88 +35,89 @@
 			<dict>
 				<key>true</key>
 				<dict>
+					<key>Options</key>
+                    <array>
+                        <dict>
+                            <key>Identifier</key>
+                            <string>coredata</string>
+                            <key>Units</key>
+                            <dict>
+                                <key>true</key>
+                                <dict>
+                                    <key>Definitions</key>
+                                    <dict>
+                                        <key>Classes/Networking/Facebook/FacebookServiceDownloadableManagedObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>FacebookServiceDownloadableManagedObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Facebook</string>
+                                                </array>
+                                        </dict>
+
+                                        <key>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>FacebookServicePostableManagedObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Facebook</string>
+                                                </array>
+                                        </dict>
+                                    </dict>
+
+                                    <key>Nodes</key>
+                                    <array>
+                                        <string>Classes/Networking/Facebook/FacebookServiceDownloadableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableManagedObjectProtocol.h</string>
+                                    </array>
+                                </dict>
+                                <key>false</key>
+                                <dict>
+                                    <key>Definitions</key>
+                                    <dict>
+                                        <key>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>FacebookServiceDownloadableObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Facebook</string>
+                                                </array>
+                                        </dict>
+
+                                        <key>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</key>
+                                        <dict>
+                                            <key>Path</key>
+                                            <string>FacebookServicePostableObjectProtocol.h</string>
+                                                <key>Group</key>
+                                                <array>
+                                                    <string>Networking</string>
+                                                    <string>Facebook</string>
+                                                </array>
+                                        </dict>
+                                    </dict>
+
+                                    <key>Nodes</key>
+                                    <array>
+                                        <string>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableObjectProtocol.h</string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </dict>
+                    </array>
+
 					<key>Definitions</key>
 					<dict>
-						<key>Options</key>
-	                    <array>
-	                        <dict>
-	                            <key>Identifier</key>
-	                            <string>coredata</string>
-	                            <key>Units</key>
-	                            <dict>
-	                                <key>true</key>
-	                                <dict>
-	                                    <key>Definitions</key>
-	                                    <dict>
-	                                        <key>Classes/Networking/Facebook/FacebookServiceDownloadableManagedObjectProtocol.h</key>
-	                                        <dict>
-	                                            <key>Path</key>
-	                                            <string>FacebookServiceDownloadableManagedObjectProtocol.h</string>
-	                                                <key>Group</key>
-	                                                <array>
-	                                                    <string>Networking</string>
-	                                                    <string>Facebook</string>
-	                                                </array>
-	                                        </dict>
-
-	                                        <key>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</key>
-	                                        <dict>
-	                                            <key>Path</key>
-	                                            <string>FacebookServicePostableManagedObjectProtocol.h</string>
-	                                                <key>Group</key>
-	                                                <array>
-	                                                    <string>Networking</string>
-	                                                    <string>Facebook</string>
-	                                                </array>
-	                                        </dict>
-	                                    </dict>
-
-	                                    <key>Nodes</key>
-	                                    <array>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceDownloadableManagedObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableManagedObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableManagedObjectProtocol.h</string>
-	                                    </array>
-	                                </dict>
-	                                <key>false</key>
-	                                <dict>
-	                                    <key>Definitions</key>
-	                                    <dict>
-	                                        <key>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</key>
-	                                        <dict>
-	                                            <key>Path</key>
-	                                            <string>FacebookServiceDownloadableObjectProtocol.h</string>
-	                                                <key>Group</key>
-	                                                <array>
-	                                                    <string>Networking</string>
-	                                                    <string>Facebook</string>
-	                                                </array>
-	                                        </dict>
-
-	                                        <key>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</key>
-	                                        <dict>
-	                                            <key>Path</key>
-	                                            <string>FacebookServicePostableObjectProtocol.h</string>
-	                                                <key>Group</key>
-	                                                <array>
-	                                                    <string>Networking</string>
-	                                                    <string>Facebook</string>
-	                                                </array>
-	                                        </dict>
-	                                    </dict>
-
-	                                    <key>Nodes</key>
-	                                    <array>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceDownloadableObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableObjectProtocol.h</string>
-	                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableObjectProtocol.h</string>
-	                                    </array>
-	                                </dict>
-	                            </dict>
-	                        </dict>
-	                    </array>
 
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
@@ -141,16 +142,7 @@
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m</key>
 						<dict>
 							<key>Beginning</key>
-							<string>#import "FacebookServiceObjectManager.h"
-#import &lt;FacebookSDK/FacebookSDK.h&gt;
-
-static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
-static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
-
-NSString * const kFacebookAccessTokenKey = @"___PROJECTNAME___.kFacebookAccessTokenKey";
-NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookExpirationDateKeyKey";
-
-@implementation FacebookServiceObjectManager
+							<string>#import &lt;FacebookSDK/FacebookSDK.h&gt;
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -161,6 +153,17 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							</array>
 						</dict>
 
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:constants</key>
+						<string>static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
+static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
+NSString * const kFacebookAccessTokenKey = @"___PROJECTNAME___.kFacebookAccessTokenKey";
+NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookExpirationDateKeyKey";
+						</string>
+
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:implementation</key>
+						<string>@implementation FacebookServiceObjectManager
+						</string>
+
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</key>
 						<dict>
 							<key>Beginning</key>
@@ -169,11 +172,9 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
     self = [super initWithHTTPClient:client serviceName:@"Facebook"];
     if(self)
     {
-
 				    		</string>
 				    		<key>End</key>
-				    		<string>
-	}
+				    		<string>}
     return self;
 }
 				    		</string>
@@ -414,6 +415,9 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<string>../Podfile:Facebook-iOS-SDK</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.h</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceObjectManager.h</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:constants</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:implementation</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:sharedManager</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</string>

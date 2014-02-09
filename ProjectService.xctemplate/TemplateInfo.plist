@@ -52,7 +52,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusChangedNotifica
 NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey";
 		</string>
 
-		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:implemetation</key>
+		<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:implementation</key>
 		<string>@implementation ___PACKAGENAMEASIDENTIFIER___ServiceObjectManager
 		</string>
 
