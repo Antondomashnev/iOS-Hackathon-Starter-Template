@@ -105,7 +105,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<string>#pragma mark - Helpers
 - (NSArray *)responsedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
+	return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
 			</string>
 			<key>End</key>
 			<string>}
@@ -119,7 +119,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 			<key>Beginning</key>
 			<string>- (NSArray *)requestedClasses
 {
-	return @[@"&lt;# Class *aClass #&gt;", @"&lt;# Class *aClass #&gt;"];
+	return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
 			</string>
 			<key>End</key>
 			<string>}
@@ -256,8 +256,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 		{
 			[class ___VARIABLE_categoryPrefix:identifier____deleteStaticRequestEntityMappingObjects];
 		}
-	}];
-							</string>
+	}];</string>
 							<key>End</key>
 							<string>}
 							</string>

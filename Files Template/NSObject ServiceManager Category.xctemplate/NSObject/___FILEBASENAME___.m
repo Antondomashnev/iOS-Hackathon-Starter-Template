@@ -7,7 +7,7 @@
 //
 
 #import "___FILEBASENAME___.h"
-#import <RestKit/RestKit.h>
+#import "___VARIABLE_categoryName:identifier___ObjectManager.h"
 
 @implementation ___VARIABLE_categoryClass:identifier___ (___VARIABLE_categoryName:identifier___)
 
@@ -53,7 +53,7 @@ static RKObjectMapping *objectMappingComplete = nil;
 }
 
 /*
- If this object should implement ___VARIABLE_categoryName:identifier___PostableObjectProtocol please use PostableObjectProtocol snippet
+ If this object should implement ___VARIABLE_categoryName:identifier___PostableObjectProtocol please use PostableObjectProtocol snippet and add ___VARIABLE_categoryName:identifier___PostableObjectProtocol to h file
  */
 
 

@@ -46,6 +46,8 @@ typedef NS_ENUM(NSInteger, ServiceObjectManagerErrorCode)
 
 extern NSString * const kServiceAccessTokenKey;
 extern NSString * const kServiceTokenSecretKey;
+extern NSString * const kServiceDidLogInNotification;
+extern NSString * const kServiceDidLogOutNotification;
 
 @interface ServiceObjectManager : RKObjectManager
 
@@ -70,6 +72,8 @@ extern NSString * const kServiceTokenSecretKey;
 
 NSString * const kServiceAccessTokenKey = @"___PROJECTNAME___.kServiceObjectManager";
 NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecretKey";
+NSString * const kServiceDidLogInNotification = @"___PROJECTNAME___.kServiceDidLogInNotification";
+NSString * const kServiceDidLogOutNotification = @"___PROJECTNAME___.kServiceDidLogOutNotification";
 
 @interface ServiceObjectManager()
 @property (nonatomic, strong, readwrite) NSString *serviceName;
@@ -170,7 +174,8 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 
 			</string>
 			<key>End</key>
-			<string>}</string>
+			<string>}
+			</string>
 			<key>Indent</key>
 			<integer>1</integer>
 		</dict>
@@ -180,7 +185,7 @@ NSString * const kServiceTokenSecretKey = @"___PROJECTNAME___.kServiceTokenSecre
 			<key>Beginning</key>
 			<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary *, NSError *))callback
 {
-	METHOD_NOT_IMPLEMENTED();
+	[[NSNotificationCenter defaultCenter] postNotificationName:kServiceDidLogInNotification object:self];
 			</string>
 			<key>End</key>
 			<string>}</string>

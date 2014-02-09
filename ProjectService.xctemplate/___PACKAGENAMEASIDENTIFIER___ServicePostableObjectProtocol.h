@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class RKObjectMapping;
+@class RKRequestDescriptor;
 
 @protocol ___PROJECTNAMEASIDENTIFIER___ServicePostableObjectProtocol <NSObject>
 

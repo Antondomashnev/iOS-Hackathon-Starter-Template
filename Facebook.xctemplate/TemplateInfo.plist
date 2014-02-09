@@ -19,6 +19,18 @@
 	<key>Options</key>
 	<array>
 		<dict>
+			<key>Identifier</key>
+            <string>facebookAppID</string>
+            <key>Name</key>
+            <string>Facebook App ID</string>
+            <key>Description</key>
+            <string>Facebook App ID</string>
+            <key>Type</key>
+            <string>text</string>
+            <key>Default</key>
+            <string></string>
+		</dict>
+		<dict>
 			<key>Default</key>
 			<string>false</string>
 			<key>Description</key>
@@ -118,6 +130,17 @@
 
 					<key>Definitions</key>
 					<dict>
+						<key>___PACKAGENAME___-Info.plist:iPhone</key>
+						<string>&lt;key&gt;FacebookAppID&lt;/key&gt;
+&lt;string&gt;___VARIABLE_facebookAppID:identifier___&lt;/string&gt;
+&lt;key&gt;URL types&lt;/key&gt;
+&lt;array&gt;
+	&lt;dict&gt;
+		&lt;array&gt;
+			&lt;string&gt;fb___VARIABLE_facebookAppID:identifier___&lt;/string&gt;
+		&lt;/array&gt;
+	&lt;/dict&gt;
+&lt;/array&gt;</string>
 
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
@@ -154,8 +177,7 @@
 						</dict>
 
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:constants</key>
-						<string>static NSString * const kFacebookAppID = @"&lt;# Facebook App ID #&gt;";
-static NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
+						<string>NSString * const kFacebookBaseURL = @"https://graph.facebook.com";
 NSString * const kFacebookAccessTokenKey = @"___PROJECTNAME___.kFacebookAccessTokenKey";
 NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookExpirationDateKeyKey";
 						</string>
@@ -320,95 +342,59 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 							<key>Beginning</key>
 							<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback
 {
-    [self updateiOSFacebookCredentialsWithCallback:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
-		void(^localCallback)(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error) = ^(FBSession *session, FBSessionState state, ServiceObjectManagerPermissionSet permissions, NSError *error){
-	        if(FB_ISSESSIONOPENWITHSTATE(state) &amp;&amp;
-	           error == nil)
-	           	{
-	           		DDLogInfo(@"Facebook login succes");
-	           		NSMutableDictionary *result = [@{} mutableCopy];
-	           		if(session.accessTokenData.accessToken)
-	           		{
-	           			result[kServiceAccessTokenKey] = session.accessTokenData.accessToken;
-	           		}
+	void(^localCallback)(FBSession *session, FBSessionState state, NSError *error) = ^(FBSession *session, FBSessionState state, NSError *error){
+        if(FB_ISSESSIONOPENWITHSTATE(state) &amp;&amp;
+           error == nil)
+           	{
+           		DDLogInfo(@"Facebook login success");
+           		NSMutableDictionary *result = [@{} mutableCopy];
+           		if(session.accessTokenData.accessToken)
+           		{
+           			result[kServiceAccessTokenKey] = session.accessTokenData.accessToken;
+           		}
 
-	           		BLOCK_SAFE_RUN(callback, result, error);
-	        }
-	        else
-	        {
-	            DDLogWarn(@"Facebook login failed: %@", [error description]);
-	            BLOCK_SAFE_RUN(callback, nil, error);
-	        }
-	    };
-
-	    switch (permissions) 
-	    {
-	        case ServiceObjectManagerPermissionSetRead:
-	        {
-	            [FBSession openActiveSessionWithReadPermissions:[FacebookServiceObjectManager facebookServiceReadPermissions]
-	                                                  allowLoginUI:YES
-	                                             completionHandler:^(FBSession *session, FBSessionState status, NSError *error) 
-	                                             {
-	                                                 localCallback(session, status, permissions, error);
-	                                             }];
-	            break;
-	        }
-	        case ServiceObjectManagerPermissionSetWrite:
-	        {
-	        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
-	        	{
-	        		[[FBSession activeSession] requestNewPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
-		       		{
-		                localCallback(session, session.state, permissions, error);
-		            }];
-	        	}
-	        	else
-	        	{
-	        		[FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error)
-	                {
-	                    localCallback(session, [FBSession activeSession].state, permissions, error);
-	                }];
-	        	}
-	            break;
-	        }
-	        default:
-	            break;
-	    }
-	}];
-							</string>
-							<key>End</key>
-							<string>}</string>
-						</dict>
-
-						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (void)updateiOSFacebookCredentialsWithCallback:(void(^)(ACAccountCredentialRenewResult renewResult, NSError *error))callback
-{
-	void(^modifiedCallback)(ACAccountCredentialRenewResult renewResult, NSError *error) = ^(ACAccountCredentialRenewResult renewResult, NSError *error){
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [[FBSession activeSession] closeAndClearTokenInformation];
-            callback(renewResult, error);
-        });
+           		BLOCK_SAFE_RUN(callback, result, error);
+        }
+        else
+        {
+            DDLogWarn(@"Facebook login failed: %@", [error description]);
+            BLOCK_SAFE_RUN(callback, nil, error);
+        }
     };
 
-	ACAccountStore *accountStore = [ACAccountStore new];
-    ACAccountType *accountTypeFB = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-	NSArray *fbAccounts = [accountStore accountsWithAccountType:accountTypeFB];
-    if ([fbAccounts count] > 0)
+    switch (permissions) 
     {
-    	[accountStore renewCredentialsForAccount:fbAccounts[0] completion:modifiedCallback];
-   	}
-   	else
-   	{
-   		modifiedCallback(ACAccountCredentialRenewResultFailed, nil);
-   	}
+        case ServiceObjectManagerPermissionSetRead:
+        {
+            [FBSession openActiveSessionWithReadPermissions:[FacebookServiceObjectManager facebookServiceReadPermissions]
+                                                  allowLoginUI:YES
+                                             completionHandler:localCallback];
+            break;
+        }
+        case ServiceObjectManagerPermissionSetWrite:
+        {
+        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
+        	{
+        		[[FBSession activeSession] requestNewPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
+	       		{
+	                localCallback(session, session.state, error);
+	            }];
+        	}
+        	else
+        	{
+        		[FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:localCallback];
+        	}
+            break;
+        }
+        default:
+            break;
+    }
 							</string>
 							<key>End</key>
-							<string>}</string>
-							<key>Indent</key>
-							<integer>1</integer>
+							<string>}
+							</string>
 						</dict>
+
 					</dict>
 					<key>Nodes</key>
 					<array>
@@ -425,12 +411,12 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:logInWithCallback</string>
-						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:updateiOSFacebookCredentialsWithCallback</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</string>
 					</array>
 				</dict>
 			</dict>
 		</dict>
+
 	</array>
 	<key>SortOrder</key>
 	<integer>1</integer>

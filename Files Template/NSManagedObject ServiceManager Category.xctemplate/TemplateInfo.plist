@@ -11,7 +11,7 @@
 	<key>DefaultCompletionName</key>
 	<string>Category</string>
 	<key>Description</key>
-	<string>An Objective-C category for NSManagedObject subclass for specific ServiceObjectManager, with ServiceDownloadableManagedObjectProtocol and header files.</string>
+	<string>An Objective-C category for NSManagedObject subclass for specific ServiceObjectManager, with implementation and header files. And implemented ServiceManagedObjectDowloadableProtocol</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -46,13 +46,23 @@
 		</dict>
 		<dict>
 			<key>Identifier</key>
-            <string>productName</string>
+            <string>categoryNameSuggestion</string>
             <key>Name</key>
             <string>Suggestion</string>
             <key>Type</key>
             <string>static</string>
             <key>Default</key>
-            <string>Name the category based on service name and add a Service suffix. For example FacebookService.</string>
+            <string>Name the category based on service name and add a "Service" suffix.</string>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+            <string>productName</string>
+            <key>Name</key>
+            <string>Product Name</string>
+            <key>Type</key>
+            <string>static</string>
+            <key>Default</key>
+            <string>___VARIABLE_categoryClass:identifier___+___VARIABLE_categoryName:identifier___</string>
 		</dict>
 	</array>
 	<key>Platforms</key>
