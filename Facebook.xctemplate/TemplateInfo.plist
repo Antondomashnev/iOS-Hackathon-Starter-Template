@@ -136,6 +136,7 @@
 &lt;key&gt;URL types&lt;/key&gt;
 &lt;array&gt;
 	&lt;dict&gt;
+		&lt;key&gt;URL Schemes&lt;/key&gt;
 		&lt;array&gt;
 			&lt;string&gt;fb___VARIABLE_facebookAppID:identifier___&lt;/string&gt;
 		&lt;/array&gt;
