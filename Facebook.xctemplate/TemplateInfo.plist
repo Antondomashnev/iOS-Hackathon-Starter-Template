@@ -28,7 +28,7 @@
             <key>Type</key>
             <string>text</string>
             <key>Default</key>
-            <string></string>
+            <string>Remain empty if Facebook unchecked</string>
 		</dict>
 		<dict>
 			<key>Default</key>
