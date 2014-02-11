@@ -130,7 +130,7 @@
 
 					<key>Definitions</key>
 					<dict>
-						<key>___PACKAGENAME___-Info.plist:iPhone</key>
+						<key>___PACKAGENAME___-Info.plist:Facebook</key>
 						<string>&lt;key&gt;FacebookAppID&lt;/key&gt;
 &lt;string&gt;___VARIABLE_facebookAppID:identifier___&lt;/string&gt;
 &lt;key&gt;URL types&lt;/key&gt;
@@ -142,6 +142,7 @@
 		&lt;/array&gt;
 	&lt;/dict&gt;
 &lt;/array&gt;</string>
+
 
 						<key>../Podfile:Facebook-iOS-SDK</key>
 						<string>pod &quot;Facebook-iOS-SDK&quot;, &quot;~> 3.11&quot;</string>
@@ -341,7 +342,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:logInWithCallback</key>
 						<dict>
 							<key>Beginning</key>
-							<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback
+							<string>- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary *dict, NSError *error))callback
 {
 	void(^localCallback)(FBSession *session, FBSessionState state, NSError *error) = ^(FBSession *session, FBSessionState state, NSError *error){
         if(FB_ISSESSIONOPENWITHSTATE(state) &amp;&amp;
@@ -374,18 +375,8 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
         }
         case ServiceObjectManagerPermissionSetWrite:
         {
-        	if(FB_ISSESSIONOPENWITHSTATE([FBSession activeSession].state))
-        	{
-        		[[FBSession activeSession] requestNewPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone completionHandler:^(FBSession *session, NSError *error) 
-	       		{
-	                localCallback(session, session.state, error);
-	            }];
-        	}
-        	else
-        	{
-        		[FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:localCallback];
-        	}
-            break;
+        	[FBSession openActiveSessionWithPublishPermissions:[FacebookServiceObjectManager facebookServiceWritePermissions] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:localCallback];
+        	break;
         }
         default:
             break;
@@ -400,6 +391,7 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 					<key>Nodes</key>
 					<array>
 						<string>../Podfile:Facebook-iOS-SDK</string>
+						<string>___PACKAGENAME___-Info.plist:Facebook</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.h</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceObjectManager.h</string>

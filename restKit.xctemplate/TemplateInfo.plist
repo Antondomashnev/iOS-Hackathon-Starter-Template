@@ -56,7 +56,7 @@ extern NSString * const kServiceDidLogOutNotification;
 + (instancetype)sharedManager;
 - (id)initWithHTTPClient:(AFHTTPClient *)client serviceName:(NSString *)serviceName;
 - (id)initWithServiceName:(NSString *)serviceName;
-- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary*, NSError*))callback;
+- (void)logInWithPermissions:(ServiceObjectManagerPermissionSet)permissions callback:(void (^)(NSDictionary *dict, NSError *error))callback;
 - (NSError *)errorForCode:(ServiceObjectManagerErrorCode)code underlyingError:(NSError *)error;
 			</string>
 			<key>End</key>
