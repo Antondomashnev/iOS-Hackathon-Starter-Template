@@ -10,20 +10,20 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>#pragma mark PostableManagedObjectProtocol
-static RKObjectMapping *postEntityMapping = nil;
-+ (RKEntityMapping *)&lt;# protocol prefix #&gt;_postManagedObjectMapping
+static RKEntityMapping *postEntityMapping = nil;
++ (RKEntityMapping *)&lt;# protocol prefix #&gt;_postManagedObjectMappingInStore:(RKManagedObjectStore *)store
 {
     if(!postEntityMapping)
     {
-        postEntityMapping = [RKObjectMapping mappingForEntityForName:[[self entityDescription] name] inManagedObjectStore: store];
+        postEntityMapping = [RKEntityMapping mappingForEntityForName:[[self MR_entityDescription] name] inManagedObjectStore: store];
         [postEntityMapping addAttributeMappingsFromDictionary:&lt;# mapping dictionary #&gt;];
     }
     return postEntityMapping;
 }
 
-+ (RKRequestDescriptor *)&lt;# protocol prefix #&gt;_managedObjectRequestDescriptor
++ (RKRequestDescriptor *)&lt;# protocol prefix #&gt;_managedObjectRequestDescriptorInStore:(RKManagedObjectStore *)store
 {
-    return [RKRequestDescriptor requestDescriptorWithMapping:[[self class] &lt;# protocol prefix #&gt;_postObjectMapping] objectClass:[self class] rootKeyPath:@"&lt;# root key path #&gt;" method:RKRequestMethodPOST];
+    return [RKRequestDescriptor requestDescriptorWithMapping:[[self class] &lt;# protocol prefix #&gt;tt_postManagedObjectMappingInStore:store] objectClass:[self class] rootKeyPath:@"&lt;# root key path #&gt;" method:RKRequestMethodPOST];
 }
 
 + (void)&lt;# protocol prefix #&gt;_deleteStaticRequestEntityMappingObjects
@@ -44,6 +44,6 @@ static RKObjectMapping *postEntityMapping = nil;
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>0</integer>
+	<integer>2</integer>
 </dict>
 </plist>
