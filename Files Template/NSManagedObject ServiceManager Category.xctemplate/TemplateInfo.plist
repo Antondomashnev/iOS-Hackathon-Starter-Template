@@ -46,16 +46,6 @@
 		</dict>
 		<dict>
 			<key>Identifier</key>
-            <string>categoryNameSuggestion</string>
-            <key>Name</key>
-            <string>Suggestion</string>
-            <key>Type</key>
-            <string>static</string>
-            <key>Default</key>
-            <string>Name the category based on service name and add a "Service" suffix.</string>
-		</dict>
-		<dict>
-			<key>Identifier</key>
             <string>productName</string>
             <key>Name</key>
             <string>Product Name</string>

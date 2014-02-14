@@ -10,11 +10,12 @@
 
 @class RKEntityMapping;
 @class RKManagedObjectStore;
+@class RKRequestDescriptor;
 
 @protocol FacebookServicePostableManagedObjectProtocol <NSObject>
 
 @required
-+ (RKRequestDescriptor *)fb_managedObjectRequestDescriptor;
++ (RKRequestDescriptor *)fb_managedObjectRequestDescriptorInStore:(RKManagedObjectStore *)store;
 + (RKEntityMapping *)fb_postManagedObjectMappingInStore:(RKManagedObjectStore *)store;
 + (void)fb_deleteStaticRequestEntityMappingObjects;
 

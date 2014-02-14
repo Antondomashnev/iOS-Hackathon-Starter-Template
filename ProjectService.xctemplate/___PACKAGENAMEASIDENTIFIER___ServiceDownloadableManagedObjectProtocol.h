@@ -14,7 +14,7 @@
 @protocol ___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol <NSObject>
 
 @required
-+ (NSArray *)___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptors;
++ (NSArray *)___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptorsInStore:(RKManagedObjectStore *)store;
 + (RKEntityMapping *)___VARIABLE_categoryPrefix:identifier____entityMappingWithoutRelationshipsInStore:(RKManagedObjectStore *)store;
 + (RKEntityMapping *)___VARIABLE_categoryPrefix:identifier____completeEntityMappingInStore:(RKManagedObjectStore *)store;
 + (void)___VARIABLE_categoryPrefix:identifier____deleteStaticResponseEntityMappingObjects;

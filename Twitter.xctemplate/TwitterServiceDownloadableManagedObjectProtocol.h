@@ -14,7 +14,7 @@
 @protocol TwitterServiceDownloadableManagedObjectProtocol <NSObject>
 
 @required
-+ (NSArray *)tw_managedObjectResponseDescriptors;
++ (NSArray *)tw_managedObjectResponseDescriptorsInStore:(RKManagedObjectStore *)store;
 + (RKEntityMapping *)tw_entityMappingWithoutRelationshipsInStore:(RKManagedObjectStore *)store;
 + (RKEntityMapping *)tw_completeEntityMappingInStore:(RKManagedObjectStore *)store;
 + (void)tw_deleteStaticResponseEntityMappingObjects;
