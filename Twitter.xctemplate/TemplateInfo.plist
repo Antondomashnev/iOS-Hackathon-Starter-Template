@@ -5,7 +5,7 @@
 	<key>Identifier</key>
 	<string>com.antondomashnev.template.hackathonApplication.Twitter</string>
 	<key>Name</key>
-	<string>Facebook Dependency</string>
+	<string>Twitter Dependency</string>
 	<key>Ancestors</key>
 	<array>
 	</array>
@@ -35,86 +35,6 @@
 			<dict>
 				<key>true</key>
 				<dict>
-                    <key>Options</key>
-                    <array>
-                        <dict>
-                            <key>Identifier</key>
-                            <string>coredata</string>
-                            <key>Units</key>
-                            <dict>
-                                <key>true</key>
-                                <dict>
-                                    <key>Definitions</key>
-                                    <dict>
-                                        <key>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</key>
-                                        <dict>
-                                            <key>Path</key>
-                                            <string>TwitterServiceDownloadableManagedObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
-                                        </dict>
-
-                                        <key>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</key>
-                                        <dict>
-                                            <key>Path</key>
-                                            <string>TwitterServicePostableManagedObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
-                                        </dict>
-                                    </dict>
-
-                                    <key>Nodes</key>
-                                    <array>
-                                        <string>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableManagedObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableManagedObjectProtocol.h</string>
-                                    </array>
-                                </dict>
-                                <key>false</key>
-                                <dict>
-                                    <key>Definitions</key>
-                                    <dict>
-                                        <key>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</key>
-                                        <dict>
-                                            <key>Path</key>
-                                            <string>TwitterServiceDownloadableObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
-                                        </dict>
-
-                                        <key>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</key>
-                                        <dict>
-                                            <key>Path</key>
-                                            <string>TwitterServicePostableObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
-                                        </dict>
-                                    </dict>
-
-                                    <key>Nodes</key>
-                                    <array>
-                                        <string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableObjectProtocol.h</string>
-                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableObjectProtocol.h</string>
-                                    </array>
-                                </dict>
-                            </dict>
-                        </dict>
-                    </array>
 
 					<key>Definitions</key>
 					<dict> 
@@ -243,27 +163,31 @@ extern NSString *const kTwitterSecret;
                         <string>NSString *const kTwitterKey = @"&lt;# Twitter Consumer Key #&gt;";
 NSString *const kTwitterSecret = @"&lt;# Twitter Consumer Secret #&gt;";
 NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
+NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
                         </string>
 
                         <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:implementation</key>
                         <string>@implementation TwitterServiceObjectManager
                         </string>
 
-						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</key>
-						<dict>
-							<key>Beginning</key>
-							<string>- (id)initWithServiceName:(NSString *)serviceName
+                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithHTTPClient</key>
+                        <dict>
+                            <key>Beginning</key>
+                            <string>- (id)initWithHTTPClient:(AFHTTPClient *)client
 {
-    if(self = [super initWithServiceName: serviceName])
+    self = [super initWithHTTPClient:client serviceName:@"Twitter"];
+    if(self)
     {
-				    		</string>
-				    		<key>End</key>
-				    		<string>
-	}
+                            </string>
+                            <key>End</key>
+                            <string>        [self setUpResponseDescriptors];
+        [self setUpRequestDescriptors];
+        [self clearStaticMappings];
+    }
     return self;
 }
-				    		</string>
-						</dict>
+                            </string>
+                        </dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</key>
 						<dict>
@@ -272,7 +196,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedManager = [[TwitterServiceObjectManager alloc] initWithServiceName:@"Twitter"];
+        sharedManager = [[TwitterServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:KTwitterBaseURL]]];
     });
 							</string>
 							<key>End</key>
@@ -296,12 +220,42 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
     });
 							</string>
 							<key>End</key>
-							<string>return store;
+							<string>
+    return store;
 }
 							</string>
 							<key>Indent</key>
 							<integer>1</integer>
 						</dict>
+
+                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:responsedClasses</key>
+                        <dict>
+                            <key>Beginning</key>
+                            <string>#pragma mark - Helpers
+- (NSArray *)responsedClasses
+{
+    return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
+                            </string>
+                            <key>End</key>
+                            <string>}
+                            </string>
+                            <key>Indent</key>
+                            <integer>1</integer>
+                        </dict>
+
+                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:requestedClasses</key>
+                        <dict>
+                            <key>Beginning</key>
+                            <string>- (NSArray *)requestedClasses
+{
+    return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
+                            </string>
+                            <key>End</key>
+                            <string>}
+                            </string>
+                            <key>Indent</key>
+                            <integer>1</integer>
+                        </dict>
 
 						<key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</key>
 						<dict>
@@ -386,7 +340,7 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                     {
                         results[kServiceAccessTokenKey] = accessToken;
                     }
-                    NSString *tokenSecret = [accountInformationString firstMatch:RX(@"(?&lt;=oauth_token_secret=)(.*)(?=&amp;))];
+                    NSString *tokenSecret = [accountInformationString firstMatch:RX(@"(?&lt;=oauth_token_secret=)(.*)(?=&amp;)")];
                     if(tokenSecret)
                     {
                         results[kServiceTokenSecretKey] = tokenSecret;
@@ -483,8 +437,10 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:RegExCategories.h</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:constants</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:implementation</string>
-                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithServiceName</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithHTTPClient</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedManager</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:responsedClasses</string>
+                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:requestedClasses</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:sharedTwitterAccountStore</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:obtainAccessTokenForAcount</string>
                         <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:selectTwitterAccountIndexFromAccounts</string>
@@ -502,8 +458,8 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                             </array>
                         </dict>
                     </array>
-
-                    <key>Options</key>
+                    
+                     <key>Options</key>
                     <array>
                         <dict>
                             <key>Identifier</key>
@@ -518,22 +474,92 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                                         <dict>
                                             <key>Path</key>
                                             <string>TwitterServiceDownloadableManagedObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
+                                            <key>Group</key>
+                                            <array>
+                                                <string>Networking</string>
+                                                <string>Twitter</string>
+                                            </array>
                                         </dict>
 
                                         <key>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</key>
                                         <dict>
                                             <key>Path</key>
                                             <string>TwitterServicePostableManagedObjectProtocol.h</string>
-                                                <key>Group</key>
-                                                <array>
-                                                    <string>Networking</string>
-                                                    <string>Twitter</string>
-                                                </array>
+                                            <key>Group</key>
+                                            <array>
+                                                <string>Networking</string>
+                                                <string>Twitter</string>
+                                            </array>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpResponseDescriptors</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+    NSArray *responsedClasses = [self responsedClasses];
+    [responsedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServiceDownloadableManagedObjectProtocol)])
+        {
+            [self addResponseDescriptorsFromArray: [class tw_managedObjectResponseDescriptorsInStore:self.managedObjectStore]];
+        }
+    }];
+                                            </string>
+                                            <key>End</key>
+                                            <string>}</string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
+                                        <string>    self.managedObjectStore = [RKManagedObjectStore defaultStore];</string>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpRequestDescriptors</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>- (void)setUpRequestDescriptors
+{
+    NSArray *requestedClasses = [self requestedClasses];
+    [requestedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServicePostableManagedObjectProtocol)])
+        {
+            [self addRequestDescriptor: [class tw_managedObjectRequestDescriptorInStore:self.managedObjectStore]];
+        }
+    }];
+                                            </string>
+                                            <key>End</key>
+                                            <string>}
+                                            </string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:clearStaticMappings</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>- (void)clearStaticMappings
+{
+    NSArray *responsedClasses = [self responsedClasses];
+    [responsedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServiceDownloadableManagedObjectProtocol)])
+        {
+            [class tw_deleteStaticResponseEntityMappingObjects];
+        }
+    }];
+
+    NSArray *requestedClasses = [self requestedClasses];
+    [requestedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServicePostableManagedObjectProtocol)])
+        {
+            [class tw_deleteStaticRequestEntityMappingObjects];
+        }
+    }];</string>
+                                            <key>End</key>
+                                            <string>}
+                                            </string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
                                         </dict>
                                     </dict>
 
@@ -541,6 +567,12 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                                     <array>
                                         <string>Classes/Networking/Twitter/TwitterServiceDownloadableManagedObjectProtocol.h</string>
                                         <string>Classes/Networking/Twitter/TwitterServicePostableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpResponseDescriptors</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpRequestDescriptors</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:clearStaticMappings</string>
                                     </array>
                                 </dict>
                                 <key>false</key>
@@ -568,17 +600,91 @@ NSString *const kTwitterServiceErrorDomain = @"TwitterServiceErrorDomain";
                                                     <string>Twitter</string>
                                                 </array>
                                         </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpResponseDescriptors</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+    NSArray *responsedClasses = [self responsedClasses];
+    [responsedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServiceDownloadableObjectProtocol)])
+        {
+            [self addResponseDescriptorsFromArray: [class tw_responseDescriptors]];
+        }
+    }];
+                                            </string>
+                                            <key>End</key>
+                                            <string>}
+                                            </string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpRequestDescriptors</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>- (void)setUpRequestDescriptors
+{
+    NSArray *requestedClasses = [self requestedClasses];
+    [requestedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServicePostableObjectProtocol)])
+        {
+            [self addRequestDescriptor: [class tw_requestDescriptor]];
+        }
+    }];
+                                            </string>
+                                            <key>End</key>
+                                            <string>}
+                                            </string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
+                                        </dict>
+
+                                        <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:clearStaticMappings</key>
+                                        <dict>
+                                            <key>Beginning</key>
+                                            <string>- (void)clearStaticMappings
+{
+    NSArray *responsedClasses = [self responsedClasses];
+    [responsedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServiceDownloadableObjectProtocol)])
+        {
+            [class tw_deleteStaticResponseMappingObjects];
+        }
+    }];
+
+    NSArray *requestedClasses = [self requestedClasses];
+    [requestedClasses each:^(Class class){
+        if([class conformsToProtocol:@protocol(TwitterServicePostableObjectProtocol)])
+        {
+            [class tw_deleteStaticRequestMappingObjects];
+        }
+    }];
+                                            </string>
+                                            <key>End</key>
+                                            <string>}
+                                            </string>
+                                            <key>Indent</key>
+                                            <integer>1</integer>
+                                        </dict>
                                     </dict>
 
                                     <key>Nodes</key>
                                     <array>
                                         <string>Classes/Networking/Twitter/TwitterServiceDownloadableObjectProtocol.h</string>
                                         <string>Classes/Networking/Twitter/TwitterServicePostableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServiceDownloadableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:import:TwitterServicePostableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpResponseDescriptors</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpRequestDescriptors</string>
+                                        <string>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:clearStaticMappings</string>
                                     </array>
                                 </dict>
                             </dict>
                         </dict>
-                    </array>
+                    </array>                    
 				</dict>
 			</dict>
 		</dict>

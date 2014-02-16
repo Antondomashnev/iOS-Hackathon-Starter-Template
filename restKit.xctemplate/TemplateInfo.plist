@@ -242,7 +242,7 @@ NSString * const kServiceDidLogOutNotification = @"___PROJECTNAME___.kServiceDid
             			<key>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</key>
             			<string>#define MR_SHORTHAND</string>
 
-            			<key>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</key>
+            			<key>Classes/Models/___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</key>
 						<dict>
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
@@ -304,7 +304,7 @@ NSString * const kServiceDidLogOutNotification = @"___PROJECTNAME___.kServiceDid
 					<key>Nodes</key>
 					<array>
 						<string>../Podfile:MagicalRecord</string>
-						<string>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
+						<string>Classes/Models/___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:import:NSManagedObjectContextCategory</string>
 						<string>___VARIABLE_classPrefix:identifier___AppDelegate.m:method:initializeCoreData</string>
 						<string>___PACKAGENAME___-Prefix.pch:objC:importCoreDataMagicalRecord</string>

@@ -202,7 +202,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 	[responsedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableManagedObjectProtocol)])
 		{
-			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptors]];
+			[self addResponseDescriptorsFromArray: [class ___VARIABLE_categoryPrefix:identifier____managedObjectResponseDescriptorsInStore:self.managedObjectStore]];
 		}
 	}];
 							</string>
@@ -226,7 +226,7 @@ self.managedObjectStore = [RKManagedObjectStore defaultStore];
 	[requestedClasses each:^(Class class){
 		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServicePostableManagedObjectProtocol)])
 		{
-			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptor]];
+			[self addRequestDescriptor: [class ___VARIABLE_categoryPrefix:identifier____managedObjectRequestDescriptorInStore:self.managedObjectStore]];
 		}
 	}];
 							</string>

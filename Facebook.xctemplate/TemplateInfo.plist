@@ -79,6 +79,76 @@
                                                     <string>Facebook</string>
                                                 </array>
                                         </dict>
+
+                                        <key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpResponseDescriptors</key>
+										<dict>
+											<key>Beginning</key>
+											<string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServiceDownloadableManagedObjectProtocol)])
+		{
+			[self addResponseDescriptorsFromArray: [class fb_managedObjectResponseDescriptorsInStore:self.managedObjectStore]];
+		}
+	}];
+											</string>
+											<key>End</key>
+											<string>}</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
+										<string>    self.managedObjectStore = [RKManagedObjectStore defaultStore];</string>
+
+										<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpRequestDescriptors</key>
+										<dict>
+											<key>Beginning</key>
+											<string>- (void)setUpRequestDescriptors
+{
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServicePostableManagedObjectProtocol)])
+		{
+			[self addRequestDescriptor: [class fb_managedObjectRequestDescriptorInStore:self.managedObjectStore]];
+		}
+	}];
+											</string>
+											<key>End</key>
+											<string>}
+											</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:clearStaticMappings</key>
+										<dict>
+											<key>Beginning</key>
+											<string>- (void)clearStaticMappings
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServiceDownloadableManagedObjectProtocol)])
+		{
+			[class fb_deleteStaticResponseEntityMappingObjects];
+		}
+	}];
+
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServicePostableManagedObjectProtocol)])
+		{
+			[class fb_deleteStaticRequestEntityMappingObjects];
+		}
+	}];</string>
+											<key>End</key>
+											<string>}
+											</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
                                     </dict>
 
                                     <key>Nodes</key>
@@ -87,6 +157,10 @@
                                         <string>Classes/Networking/Facebook/FacebookServicePostableManagedObjectProtocol.h</string>
                                         <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableManagedObjectProtocol.h</string>
                                         <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableManagedObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpResponseDescriptors</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpRequestDescriptors</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:clearStaticMappings</string>
                                     </array>
                                 </dict>
                                 <key>false</key>
@@ -114,6 +188,75 @@
                                                     <string>Facebook</string>
                                                 </array>
                                         </dict>
+
+                                        <key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpResponseDescriptors</key>
+										<dict>
+											<key>Beginning</key>
+											<string>#pragma mark - Mapping
+- (void)setUpResponseDescriptors
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServiceDownloadableObjectProtocol)])
+		{
+			[self addResponseDescriptorsFromArray: [class fb_responseDescriptors]];
+		}
+	}];
+											</string>
+											<key>End</key>
+											<string>}
+											</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpRequestDescriptors</key>
+										<dict>
+											<key>Beginning</key>
+											<string>- (void)setUpRequestDescriptors
+{
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServicePostableObjectProtocol)])
+		{
+			[self addRequestDescriptor: [class fb_requestDescriptor]];
+		}
+	}];
+											</string>
+											<key>End</key>
+											<string>}
+											</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
+
+										<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:clearStaticMappings</key>
+										<dict>
+											<key>Beginning</key>
+											<string>- (void)clearStaticMappings
+{
+	NSArray *responsedClasses = [self responsedClasses];
+	[responsedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(___PROJECTNAMEASIDENTIFIER___ServiceDownloadableObjectProtocol)])
+		{
+			[class fb_deleteStaticResponseMappingObjects];
+		}
+	}];
+
+	NSArray *requestedClasses = [self requestedClasses];
+	[requestedClasses each:^(Class class){
+		if([class conformsToProtocol:@protocol(FacebookServicePostableObjectProtocol)])
+		{
+			[class fb_deleteStaticRequestMappingObjects];
+		}
+	}];
+											</string>
+											<key>End</key>
+											<string>}
+											</string>
+											<key>Indent</key>
+											<integer>1</integer>
+										</dict>
                                     </dict>
 
                                     <key>Nodes</key>
@@ -122,6 +265,9 @@
                                         <string>Classes/Networking/Facebook/FacebookServicePostableObjectProtocol.h</string>
                                         <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServiceDownloadableObjectProtocol.h</string>
                                         <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:import:FacebookServicePostableObjectProtocol.h</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpResponseDescriptors</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:setUpRequestDescriptors</string>
+                                        <string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:clearStaticMappings</string>
                                     </array>
                                 </dict>
                             </dict>
@@ -198,7 +344,10 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
     {
 				    		</string>
 				    		<key>End</key>
-				    		<string>}
+				    		<string>    [self setUpResponseDescriptors];
+		[self setUpRequestDescriptors];
+		[self clearStaticMappings];
+	}
     return self;
 }
 				    		</string>
@@ -271,6 +420,35 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
     return fullParameters;
 }
 							</string>
+						</dict>
+
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:responsedClasses</key>
+						<dict>
+							<key>Beginning</key>
+							<string>#pragma mark - Helpers
+- (NSArray *)responsedClasses
+{
+	return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
+						</dict>
+
+						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:requestedClasses</key>
+						<dict>
+							<key>Beginning</key>
+							<string>- (NSArray *)requestedClasses
+{
+	return @[&lt;# Class *aClass #&gt;, &lt;# Class *aClass #&gt;];
+							</string>
+							<key>End</key>
+							<string>}
+							</string>
+							<key>Indent</key>
+							<integer>1</integer>
 						</dict>
 
 						<key>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</key>
@@ -402,6 +580,8 @@ NSString * const kFacebookExpirationDateKeyKey = @"___PROJECTNAME___.kFacebookEx
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceReadPermissions</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:facebookServiceWritePermissions</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:completeRequestParametersForParameters</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:responsedClasses</string>
+						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:requestedClasses</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:appropriateObjectRequestOperationWithObject</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:logInWithCallback</string>
 						<string>Classes/Networking/Facebook/FacebookServiceObjectManager.m:method:openSessionIfTokenLoaded</string>
