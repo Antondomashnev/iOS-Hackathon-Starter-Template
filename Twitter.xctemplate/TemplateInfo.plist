@@ -18,6 +18,18 @@
 	</array>
 	<key>Options</key>
 	<array>
+        <dict>
+            <key>Identifier</key>
+            <string>twitterAppID</string>
+            <key>Name</key>
+            <string>Twitter App ID</string>
+            <key>Description</key>
+            <string>Twitter App ID</string>
+            <key>Type</key>
+            <string>text</string>
+            <key>Default</key>
+            <string>Remain empty if Twitter unchecked</string>
+        </dict>
 		<dict>
 			<key>Default</key>
 			<string>false</string>
@@ -38,6 +50,9 @@
 
 					<key>Definitions</key>
 					<dict> 
+                        <key>../Podfile:AFOAuth1Client</key>
+                        <string>pod &quot;AFOAuth1Client&quot;, &quot;~> 0.3&quot;</string>
+
                         <key>Classes/Networking/Twitter/OAuth+Additions.h</key>
                         <dict>
                             <key>Path</key>
@@ -149,6 +164,7 @@ extern NSString *const kTwitterSecret;
 						<dict>
 							<key>Beginning</key>
 							<string>#import &lt;Accounts/Accounts.h&gt;
+#import &lt;AFOAuth1Client/AFOAuth1Client.h&gt;
 							</string>
 							<key>End</key>
 							<string>@end</string>
@@ -196,7 +212,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedManager = [[TwitterServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:KTwitterBaseURL]]];
+        sharedManager = [[TwitterServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:KTwitterBaseURL] key:kTwitterKey secret:kTwitterSecret]];
     });
 							</string>
 							<key>End</key>
@@ -339,6 +355,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
                     if(accessToken)
                     {
                         results[kServiceAccessTokenKey] = accessToken;
+                        ((AFOAuth1Client *)self.HTTPClient).accessToken = accessToken;
                     }
                     NSString *tokenSecret = [accountInformationString firstMatch:RX(@"(?&lt;=oauth_token_secret=)(.*)(?=&amp;)")];
                     if(tokenSecret)
@@ -421,6 +438,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
 					</dict>
 					<key>Nodes</key>
 					<array>
+                        <string>../Podfile:AFOAuth1Client</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.h</string>
 						<string>Classes/Networking/Twitter/OAuth+Additions.m</string>
 						<string>Classes/Networking/Twitter/OAuthCore.h</string>
