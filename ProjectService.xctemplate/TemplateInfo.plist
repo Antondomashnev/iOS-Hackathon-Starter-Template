@@ -213,9 +213,7 @@ NSString * const k___PACKAGENAMEASIDENTIFIER___ReachabilityStatusKey = @"k___PAC
 						</dict>
 
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
-						<string>
-self.managedObjectStore = [RKManagedObjectStore defaultStore];
-						</string>
+						<string>        self.managedObjectStore = [RKManagedObjectStore defaultStore];</string>
 
 						<key>Classes/Networking/ProjectService/___PACKAGENAMEASIDENTIFIER___ServiceObjectManager.m:method:setUpRequestDescriptors</key>
 						<dict>

@@ -242,10 +242,10 @@ NSString * const kServiceDidLogOutNotification = @"___PROJECTNAME___.kServiceDid
             			<key>___PACKAGENAME___-Prefix.pch:objC:importMagicalRecordShorthand</key>
             			<string>#define MR_SHORTHAND</string>
 
-            			<key>Classes/Models/___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</key>
+            			<key>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</key>
 						<dict>
 							<key>Path</key>
-							<string>___PACKAGENAMEASIDENTIFIER___DataModel.xcdatamodeld</string>
+							<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
               				<key>Group</key>
               				<string>Models</string>
 						</dict>
@@ -270,12 +270,12 @@ NSString * const kServiceDidLogOutNotification = @"___PROJECTNAME___.kServiceDid
 							<key>Beginning</key>
 							<string>- (void)initializeCoreData
 {
-	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"___PACKAGENAMEASIDENTIFIER___DataModel" ofType:@"momd"]];
+	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"___PACKAGENAMEASIDENTIFIER___" ofType:@"momd"]];
     NSAssert(modelURL != nil, @"Unable to find DataModel in main bundle");
 
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"___PACKAGENAMEASIDENTIFIER___DataModel"];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"___PACKAGENAMEASIDENTIFIER___"];
     NSError *error = nil;
     
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:

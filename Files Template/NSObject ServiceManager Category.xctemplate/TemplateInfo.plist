@@ -54,6 +54,16 @@
             <key>Default</key>
             <string>___VARIABLE_categoryClass:identifier___+___VARIABLE_categoryName:identifier___</string>
 		</dict>
+		<dict>
+			<key>Identifier</key>
+            <string>suggest</string>
+            <key>Name</key>
+            <string>Sugegstion</string>
+            <key>Type</key>
+            <string>static</string>
+            <key>Default</key>
+            <string>Use Service suffix for category name</string>
+		</dict>
 	</array>
 	<key>Platforms</key>
 	<array>

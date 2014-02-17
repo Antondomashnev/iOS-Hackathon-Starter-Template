@@ -18,18 +18,6 @@
 	</array>
 	<key>Options</key>
 	<array>
-        <dict>
-            <key>Identifier</key>
-            <string>twitterAppID</string>
-            <key>Name</key>
-            <string>Twitter App ID</string>
-            <key>Description</key>
-            <string>Twitter App ID</string>
-            <key>Type</key>
-            <string>text</string>
-            <key>Default</key>
-            <string>Remain empty if Twitter unchecked</string>
-        </dict>
 		<dict>
 			<key>Default</key>
 			<string>false</string>
@@ -212,7 +200,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
 + (instancetype)sharedManager{
     static dispatch_once_t onceToken;
     dispatch_once(&amp;onceToken, ^{
-        sharedManager = [[TwitterServiceObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL: [NSURL URLWithString:KTwitterBaseURL] key:kTwitterKey secret:kTwitterSecret]];
+        sharedManager = [[TwitterServiceObjectManager alloc] initWithHTTPClient:[[AFHTTPClient alloc] initWithBaseURL: [NSURL URLWithString:KTwitterBaseURL] key:kTwitterKey secret:kTwitterSecret]];
     });
 							</string>
 							<key>End</key>
@@ -347,15 +335,15 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
         if(account){
             [self obtainAccessTokenForAcount:account usingCallback:^(NSString *accountInformationString, NSError *tokenObtainingError) {
                 
-                if(accountInformationString.length>0)
+                if([accountInformationString rangeOfString:@"error"].location != NSNotFound)
                 {
                     DDLogInfo(@"Twitter login success");
+                    ((AFOAuth1Client *)self.HTTPClient).accessToken = [[AFOAuth1Token alloc] initWithQueryString:accountInformationString];
                     NSMutableDictionary *results = [@{} mutableCopy];
                     NSString *accessToken = [accountInformationString firstMatch:RX(@"(?&lt;=oauth_token=)(.*)(?=&amp;)")];
                     if(accessToken)
                     {
                         results[kServiceAccessTokenKey] = accessToken;
-                        ((AFOAuth1Client *)self.HTTPClient).accessToken = accessToken;
                     }
                     NSString *tokenSecret = [accountInformationString firstMatch:RX(@"(?&lt;=oauth_token_secret=)(.*)(?=&amp;)")];
                     if(tokenSecret)
@@ -365,6 +353,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
                     BLOCK_SAFE_RUN(callback, results, nil);
                 }
                 else{
+                    DDLogError(@"Error: failed lo log in in Twitter");
                     NSError *tokenError = [self errorForCode:ServiceObjectManagerErrorCodeAuthorizationError underlyingError:tokenObtainingError];
                     if(callback)
                     {
@@ -531,7 +520,7 @@ NSString *const KTwitterBaseURL = @"https://api.twitter.com/1.1/";
                                         </dict>
 
                                         <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:initWithHTTPClient:managedObjectStore</key>
-                                        <string>    self.managedObjectStore = [RKManagedObjectStore defaultStore];</string>
+                                        <string>        self.managedObjectStore = [RKManagedObjectStore defaultStore];</string>
 
                                         <key>Classes/Networking/Twitter/TwitterServiceObjectManager.m:method:setUpRequestDescriptors</key>
                                         <dict>
