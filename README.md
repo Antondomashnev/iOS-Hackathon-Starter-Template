@@ -1,1 +1,4 @@
-# This is my README
+iOS-Hackathon-Starter-Template
+==============================
+
+A boilerplate for objective-c iOS applications
